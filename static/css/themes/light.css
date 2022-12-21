@@ -1,0 +1,7 @@
+:root {
+    --main-bg: #fff;
+    --focus-text: #000;
+    --main-text: #262626;
+    --nav-hover-bg: #262626;
+    --highlight-gradiant: linear-gradient(60deg, #FBAE3C, #FA9845, #E9705A, #C55469, #96446E, #623965);
+}

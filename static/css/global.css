@@ -1,0 +1,45 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;0,900;1,300;1,400;1,500;1,700;1,900&display=swap');
+:root {
+    font-family: 'Roboto', Inter, Avenir, Helvetica, Arial, sans-serif;
+    color: var(--main-text);
+    color-scheme: light dark;
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+}
+  
+
+body {
+    background-color: var(--main-bg);
+}
+
+a {
+    text-decoration: none;
+}
+
+.focus-text {
+    color: var(--focus-text);
+}
+
+.content {
+    width: 95%;
+    max-width: 900px;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .content {
+        max-width: 1200px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .content {
+        max-width: 1200px;
+    }
+}
