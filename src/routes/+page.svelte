@@ -13,6 +13,13 @@
 </svelte:head>
 
 
-<div>
+<div class="home-container">
     <WelcomeHeading />
 </div>
+
+<style>
+    .home-container {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
