@@ -1,5 +1,7 @@
 ---
-title: Post One
+title: Welcome to my Blog
+categories:
+  - "trains"
 date: "2021-12-14"
 ---
 
