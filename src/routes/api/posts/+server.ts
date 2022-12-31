@@ -14,5 +14,4 @@ export const GET = async () => {
   catch {
     return {}
   }
-
 }

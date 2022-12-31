@@ -1,6 +1,6 @@
 ---
 title: Welcome to my Blog
-categories:
+tags:
   - "trains"
 date: "2021-12-14"
 ---
