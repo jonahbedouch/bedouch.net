@@ -10,7 +10,7 @@
 
 <div class="welcome-heading">
     <div class="">
-        <h1 class="welcome">Hi, I'm Jonah Bedouch.</h1>
+        <h1 class="heading">Hi, I'm Jonah Bedouch.</h1>
         <h2 class="subheading">I'm a passionate software developer, public transit enthusiast, and coffee addict. I love learning and trying new things. I'm currently pursuing an <strong class="focus-text">Electrical Engineering and Computer Sciences B.S. at UC Berkeley</strong> and working on <strong class="focus-text">Customer Engineering at Bosch US</strong> for Nevonex. I've primarily worked on full stack development and backend programming with Typescript and Python in the past.</h2>
         <div class="social-media">
             <a href="https://sfba.social/@jonahbedouch" class="icon"><Mastodon /></a>
@@ -24,14 +24,11 @@
 
 <style>
     .welcome-heading {
+        margin: 5rem auto 0px;
         width: 100%;
-        max-width: 1200px;
-        margin: 5rem auto;
-        display: flex;
-        flex-direction: row;
     }
 
-    .welcome {
+    .heading {
         color: var(--focus-text);
         font-size: 3rem;
         margin: 0;

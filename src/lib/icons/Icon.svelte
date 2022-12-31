@@ -5,6 +5,7 @@
 <style>
     span {
         font-family: 'lineawesome-brands';
-        margin: 0
+        margin: 0;
+        user-select: none;
     }
 </style>

@@ -1,5 +1,9 @@
 <script>
-	import WelcomeHeading from "$lib/components/WelcomeHeading.svelte";
+	import Education from "$lib/components/Education.svelte";
+	import FeaturedBlogPosts from "$lib/components/FeaturedBlogPosts.svelte";
+import FeaturedProjects from "$lib/components/FeaturedProjects.svelte";
+import WelcomeHeading from "$lib/components/WelcomeHeading.svelte";
+	import WorkExperience from "$lib/components/WorkExperience.svelte";
 
 </script>
 <svelte:head>
@@ -15,6 +19,10 @@
 
 <div class="home-container">
     <WelcomeHeading />
+    <FeaturedProjects />
+    <WorkExperience />
+    <Education />
+    <FeaturedBlogPosts />
 </div>
 
 <style>
