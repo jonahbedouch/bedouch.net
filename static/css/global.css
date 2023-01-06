@@ -22,12 +22,10 @@
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
 }
-  
 
 body {
     background-color: var(--main-bg);
 }
-
 
 p {
     font-size: 1.2rem;
@@ -53,10 +51,16 @@ a:hover {
     margin: 0 auto;
 }
 
+.modal {
+	width: 95%;
+	max-width: 100vh;
+}
+
 *::selection {
     background: var(--browser-highlight);
 	color: white;
   }
+
 *::-moz-selection {
     background: var(--browser-highlight);
 	color: white;
@@ -64,14 +68,14 @@ a:hover {
 
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
-    .content {
+    .content, .modal {
         max-width: 1200px;
     }
 }
 
 /* Extra large devices (large laptops and desktops, 1200px and up) */
 @media only screen and (min-width: 1200px) {
-    .content {
+    .content, .modal {
         max-width: 1200px;
     }
 }

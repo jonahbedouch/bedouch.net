@@ -2,4 +2,4 @@
 	import Icon from "./Icon.svelte";
 
 </script>
-<Icon>&#xf0e1;</Icon>
+<Icon type="brand">&#xf0e1;</Icon>
