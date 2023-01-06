@@ -7,7 +7,7 @@ export const load: PageLoad = async ({ params }) => {
             throw TypeError();
         }
         else {
-            const post = await import(`../${params.slug}.md`);
+            const post = await import(`/src/content/projects/${params.slug}/index.svx`);
             const { title, date } = post.metadata;
             const content = post.default;
         

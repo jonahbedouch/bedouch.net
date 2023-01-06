@@ -13,11 +13,11 @@
         <h1 class="heading">Hi, I'm Jonah Bedouch.</h1>
         <h2 class="subheading">I'm a passionate software developer, public transit enthusiast, and coffee addict. I love learning and trying new things. I'm currently pursuing an <strong class="focus-text">Electrical Engineering and Computer Sciences B.S. at UC Berkeley</strong> and working on <strong class="focus-text">Customer Engineering at Bosch US</strong> for Nevonex. I've primarily worked on full stack development and backend programming with Typescript and Python in the past.</h2>
         <div class="social-media">
-            <a href="https://sfba.social/@jonahbedouch" class="icon"><Mastodon /></a>
-            <a href="https://github.com/jonahbedouch" class="icon"><Github /></a>
-            <a href="https://linkedin.com/in/jonahbedouch" class="icon"><LinkedIn /></a>
-            <a href="https://instagram.com/jonahbedouch" class="icon"><Instagram /></a>
-            <a href="mailto:jonah@bedouch.net" class="icon"><Email /></a>
+            <a href="https://sfba.social/@jonahbedouch" class="icon" rel="external"><Mastodon /></a>
+            <a href="https://github.com/jonahbedouch" class="icon" rel="external"><Github /></a>
+            <a href="https://linkedin.com/in/jonahbedouch" class="icon" rel="external"><LinkedIn /></a>
+            <a href="https://instagram.com/jonahbedouch" class="icon" rel="external"><Instagram /></a>
+            <a href="mailto:jonah@bedouch.net" class="icon" rel="external"><Email /></a>
         </div>
     </div>
 </div>

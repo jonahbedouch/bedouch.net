@@ -16,6 +16,7 @@
 		"@sveltejs/kit": "^1.0.0",
 		"@typescript-eslint/eslint-plugin": "^5.45.0",
 		"@typescript-eslint/parser": "^5.45.0",
+		"autoprefixer": "^10.4.13",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
 		"eslint-plugin-svelte3": "^4.0.0",
@@ -28,5 +29,13 @@
 		"typescript": "^4.9.3",
 		"vite": "^4.0.0"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"mdsvex-relative-images": "^1.0.3",
+		"rehype-autolink-headings": "^6.1.1",
+		"rehype-figure": "^1.0.1",
+		"rehype-slug": "^5.1.0",
+		"rehype-toc": "^3.0.2",
+		"remark-collapse": "^0.1.2"
+	}
 }

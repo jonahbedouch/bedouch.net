@@ -1,0 +1,8 @@
+---
+title: Welcome to my Blog
+tags:
+  - "trains"
+date: "2021-12-14"
+---
+# i hate you 
+hi^2 

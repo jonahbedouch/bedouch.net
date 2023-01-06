@@ -1,0 +1,78 @@
+---
+title: Welcome to my Blog
+tags:
+  - "trains"
+date: "2021-12-14"
+---
+# Who am I?
+Hi! I'm Jonah Bedouch. I'm a computer science nerd, coffee addict, public transit enthusiast, and occasional gamer. 
+I also happen to be studying Electrical Engineering and Computer Science at UC Berkeley. If you want to know more about 
+me academically or professionally, the [home page](/) of my website serves as my portfolio, or you can check out 
+[my resume](/resume.pdf). This blog is not really intended to further either of those avenues of myself, it's just meant 
+to be a personal space to talk about my interests, things that I've done recently, or cool stuff I've discovered. This, 
+of course, will have some overlap with computer science, since CS is a major part of my life. It won't be the point of 
+the whole blog, however, and hopefully the categories will help you separate between posts that you personally find 
+interesting and ones that you don't. With that being said, here's some things I enjoy to get us acquainted:
+
+## Coffee
+I'm a bit of a "weird coffee person," in the words of [2007 World Barista Champion James Hoffman](https://www.youtube.com/@jameshoffmann). 
+If you're curious about my brewing setup, I currently brew pour overs with the [Hario V60](https://global.hario.com/sp_v60series.html) 
+and the [Timemore Chestnut C2 Grinder](https://en.timemore.com/taimochanpin/modouji/lizicshouyaomodouji-m/). In terms 
+of beans, I don't have a consistent choice. I always look for interesting, locally-sourced light roasts (alongside the 
+occasional [Fellow Drop](https://drops.fellowproducts.com/)). With that being said, if you're looking for a place to 
+start, I'm a frequenter of [Andytown Coffee Roasters](https://www.andytownsf.com/), a local chain in San Francisco.
+I brew according to Hoffman's [V60 Guide](https://www.youtube.com/watch?v=AI4ynXzkSQo). 
+
+## Video Games
+I used to be a much bigger gamer than I am now, but I still play on occasion. Most of what I play is exceedingly casual, 
+like Bloons Tower Defense 6, Minecraft, and many other singleplayer games. Some of my favorite games of all time include 
+the Portal franchise, Minecraft, and Hollow Knight. You can check out my [Steam Profile](https://steamcommunity.com/id/Jonahahahahah/) 
+if you want to see more on that front. If you have any good video game recommendations (or board games for that matter), 
+I'm always happy to hear about them!
+
+## Programming
+It obviously had to make the list at some point. The earliest I started working on projects was in the fourth grade, 
+when I worked on a website for my FIRST Lego League robotics team. From there, I picked up my first OOP experience 
+writing Discord bots in Python starting in 7th grade. In more recent years, I've been working on web-based projects 
+like networking and web dashboard design for Leap XR, interface design for the web-based Nevonex dashboard at Bosch, 
+and other personal projects. I'm looking to get more into less web oriented projects on my own time, and still trying
+to find a niche I'm happy committing to in CS.
+
+## Public Transit
+I've recently become quite enamoured with public transit after moving to Berkeley, and have spent quite a bit of time 
+learning about different metro and commuter rail systems across the US. I find them fascinating from an engineering 
+and planning perspective, as well as from a utilitarian perspective. I probably won't talk all too much about random 
+transit stuff on the blog, mostly because I get the majority of my information from consolidated sources like 
+[Alan Fisher](https://www.youtube.com/@alanthefisher) on YouTube, and writing my own posts on stuff like that would
+prove redundant.
+
+## Taking Pictures
+While I wouldn't describe anything I've done as "photography," ever since coming to Berkeley I've been inspired to take 
+pictures of the campus, and cool things I see when I'm around the bay. If you wanna see some of those photos, you can 
+find them on my [photo instagram account](https://www.instagram.com/mygpaisdroppingsofast/). At the time of writing this, 
+I'm about a month behind on posting things, but I have a couple of photos in queue, so hopefully something new should 
+come soon. In the meanwhile, here's a picture of Fresno in rain:
+
+![Campus Pointe Fresno at night in the rain](./images/campus_pointe.jpg)
+
+# Why a Blog?
+Many may find the choice to host a blog in 2022 a bit strange. It is true, the internet has been vastly dominated by 
+social media, and the advent of microblogging platforms have rendered most blogs as nothing more than a source for either 
+inspiration, knowledge, or some good recipies. I am not exempt from this trend, and I wholely confess that I do not 
+frequent any blogs in particular, nor do I make a particularly heavy-handed effort to abstain from any form of social 
+media. With that being said, recent times have shown that each of these platforms suffer from countless issues. Whether
+it be privacy scandals, bias, or the impermanence of policy when confronted with leadership change or the opportunity 
+to profit, social media has many problems. On top of this, no social media site truly offers a replacement for long-form
+blogging, with most choosing to focus on serving a large amount of short-form content - a set of pictures, a short video,
+or 240 characters. These forms of media serve an adequate purpose, but do not displace the value of longer form content.
+As such, I decided that I would begin blogging on occasion, to give myself a sense of control over the content that I
+produce and to enable myself to venture into the realm of longer-form content (since short-form content production doesn't
+particularly interest me, and most of my social media profiles are barren except for reposts of other people's content).
+
+# What now?
+Stick around if you'd like! You can add this blog to an RSS feed, or just pop in from time to time, whatever works for
+you! Anticipate the occasional travel, gaming, coffee, or transit related posts alongside rants and programming related
+posts. I'm not too sure how frequently I'll be posting, but I'll try to at least keep it more frequent than my Instagram.
+If there is anything in particular you would like me to talk about, or if you have any questions or suggestions for me, 
+feel free to email me at [jonah@bedouch.net](mailto:jonah@bedouch.net). I love chatting about things, so I'd be elated
+if you did.

@@ -5,7 +5,7 @@
 	<a id="name" href="/">Jonah Bedouch</a>
 	<a id="projects" class="nav-item" href="/projects">Projects</a>
 	<a id="blog" class="nav-item" href="/blog">Blog</a>
-	<a id="resume" class="outline-btn b-blue" href="/resume.pdf">Resume</a>
+	<a id="resume" class="outline-btn b-blue" href="/resume.pdf" rel="external">Resume</a>
 </nav>
 
 <nav class="mobile">
@@ -176,6 +176,7 @@
 
 	#mobile-menu-toggle:checked ~ .mobile-menu {
 		height: 10rem;
+		border: 4px solid var(--border);
 	}
 
 	/* Menu */
@@ -197,6 +198,7 @@
 		border-radius: 15px;
 		margin-top: 0.25rem;
 		grid-column: span 2;
+		border: 0px solid var(--border);
 	}
 
 	/* Small devices (portrait tablets and large phones, 600px and up) */

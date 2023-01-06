@@ -1,21 +1,29 @@
 :root {
     --main-bg: #fff;
-    --bg-alt: #d8d8d8;
+    --bg-alt: rgb(225, 225, 225);
+    --border: #000;
+    --underline: var(--border);
     --focus-text: #000;
     --main-text: #262626;
     --nav-hover-bg: #d8d8d8;
     --highlight-gradiant: linear-gradient(60deg, #FBAE3C, #FA9845, #E9705A, #C55469, #96446E, #623965);
     --browser-highlight: #C55469;
+    --link-color: #C55469;
+    --link-hover: #B23C52;
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
         --main-bg: #000c16;
-        --bg-alt: #00192e;
+        --bg-alt: #000a12;
+        --border: #000408;
+        --underline: #606060;
         --focus-text: #fff;
         --main-text: #d8d8d8;
         --nav-hover-bg: #00192e;
         --highlight-gradiant: linear-gradient(60deg, #FBAE3C, #FA9845, #E9705A, #C55469, #96446E, #623965);
         --browser-highlight: #E9705A;
+        --link-color: #E9705A;
+        --link-hover: #E5573D;
     }
 }

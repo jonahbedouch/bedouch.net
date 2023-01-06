@@ -1,4 +1,5 @@
 import { error } from "@sveltejs/kit"
+import type { HtmlElementNode } from "rehype-toc"
 
 const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unknown>>) => {
     
@@ -7,7 +8,8 @@ const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unk
     const allPosts = await Promise.all(
         iterablePostFiles.map(async ([path, resolver]) => {
             const { metadata } = await resolver()
-            const postPath = path.slice(11, -3)
+            const postPath = path.slice(9,-10)
+
 
             return {
                 meta: metadata,
@@ -20,11 +22,11 @@ const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unk
 }
 
 export const fetchBlogPosts = async () => {
-    return await fetchMarkdownPosts(import.meta.glob('/src/routes/blog/*.md'))
+    return await fetchMarkdownPosts(import.meta.glob('/content/blog/**/index.svx'))
 }
 
 export const fetchProjects = async () => {
-    return await fetchMarkdownPosts(import.meta.glob('/src/routes/projects/*.md'))
+    return await fetchMarkdownPosts(import.meta.glob('/content/projects/**/index.svx'))
 }
 
 export const getMetaType = (data: Array<{'path': string, 'meta': Record<string, string>}>, metaType: string, required = true) => {
