@@ -229,7 +229,7 @@
 		height: 1.8rem;
 		width: 1.8rem;
 		left: 0.3rem;
-		bottom: 0.4rem;
+		bottom: 0.35rem;
 		background-color: white;
 		-webkit-transition: 0.4s;
 		transition: 0.4s;
