@@ -1,7 +1,7 @@
 ---
 title: Personal Website
 date: "2023-01-19"
-featureImage: "/content/projects/svelte-site/images/campus_pointe.jpg"
+featureImage: "/content/projects/svelte-site/images/website-thumb.webp"
 excerpt: ""
 tags:
   - "Web"
@@ -9,5 +9,77 @@ tags:
 featured: true
 ---
 
-# i hate you 
-hi^2 
+# Overview
+When beginning this project, I wanted to have a space to be able to host an online portfolio, write blog posts, and talk 
+about cool projects that I was working on. I wanted it to be really simple to write about projects or to write posts 
+since I knew that if it was super complicated, it would be unlikely that I'd want to do it all that often. I also knew 
+that I didn't want to use a CDN, since the associated costs of that are nonzero, which placed it outside of my price 
+range for the project. I had been enjoying working with Svelte recently, so it felt like a good time to put the framework 
+to the test. After doing some research online I found a 
+[great blog post by Josh Collinsworth](https://joshcollinsworth.com/blog/build-static-sveltekit-markdown-blog) discussing 
+how their blog works, and much of this site takes inspiration from it, although with several alterations.
+
+# How Does the Site Work?
+This website is built as a Svelte project using Svelte component-enhanced markdown through mdsvex. The home page of the 
+site is written purely in Svelte and styled with CSS. This is also true of the general Blog and Project pages. The blog 
+posts and project writeups are written in `.svx` files, which are component-enhanced markdown files similar to traditional 
+`.mdx` files in React. This markdown is fed through some remark and rehype plugins for formatting, then made available 
+to Svelte through a SvelteKit server-only api endpoint. From there, when a user queries the `blogs/[slug]` path or the 
+`projects/[slug]` path the page sends a request to the endpoint for the relevant markdown content, then loads it alongside 
+the necessary styling for the page. This is the bulk of the core functionality of the site, but there are also some fun 
+additional features which I included while designing it.
+
+## Custom Theming
+The entire site is reactively themed using a set of CSS variables. Because of this, customizing the theme is quite 
+simple. Within the website's static directory, there are individual CSS files which correspond to each theme that is 
+implemented on the site. These CSS files simply contain the list of css variables necessary for that theme within the 
+`:root` element (with the exception of reactive themes, which also include a media query to decide whether to use the 
+light or dark color scheme). On page load, before Svelte is even initialized, the site tries to grab the user's preferred 
+theme from Local Storage. If it exists, it loads that CSS file as the theme file by setting the `href` of a link element 
+with the id `theme`. From there, when Svelte loads in properly it creates a more advanced representation of the theme, 
+as a JSON object describing the color scheme, whether high contrast is enabled, and whether to use seasonal theming 
+(that is, special themes depending on the time of year). After this, Svelte checks again to see if the theme is in Local 
+Storage. If it is not, it adds two entries to the store: A `theme` entry, which consists of a stringified version of 
+this JSON object, and a `theme-str` entry, which represents the path directly to the current theme file so that the 
+browser can load it without needing Svelte to be loaded. From there, Svelte stores the current theme JSON as a writable 
+store, with a listener attached so that whenever it gets updated, the `theme` and `theme-str` entries get updated as 
+well, and the `href` of the `.theme` link element gets changed in real time. A simple button in the footer of the page 
+allows users access to a modal that updates the writable store, making it possible to change the theme on the page 
+without needing a reload and to have it persist between page loads without the use of cookies.
+
+## Seasonal Theming
+This section is an extension to the above one. When the `seasonal` option is set to true, the function which grabs the 
+path to the current theme also checks to see whether or not the date is within range of a specific set range. If it is, 
+it appends `_season` to the end of the css file name, replacing season with the season which corresponds to the range. 
+In doing so, it's possible to have a light, dark, and reactive custom theme for each season of the year, and for major 
+holidays. It is also technically possible to incorporate high contrast variants of each of these, but doing so would be 
+difficult given the limited color palette of high contrast pages, so I've chosen to make the seasonal and high contrast 
+options mutually exclusive. While I haven't written any of these themes yet, I look forward to adding them as time goes 
+on.
+
+## Post Tags and Filtering
+Although currently unused, both the blog and project overview pages are designed to be able to restrict the amount of 
+content that they show the user based on selected tags. You can test this out yourself by appending `?filter=` to the 
+end of either of their URLs, alongside with a tag that is not present in any of the articles. Nothing should come up. 
+This works on either page becasue the code in `+page.ts` which handles calling the API and sending the data to the 
+template checks to see if there is a filter URL parameter before requesting the posts from the API endpoint. If it does 
+find one, it filters the results of the API endpoint before passing them along to the template, such that only posts 
+with a tag that matches the filter tag make it through. This may be used later in updated Blog / Project pages in order 
+to allow users to quickly filter between key tags or languages in their search for a post that they want to read.
+
+## RSS Feeds
+Because of Svelte's server-only endpoints, making an RSS feed for the blog and projects page of the site was basically 
+as simple as choosing a path for the endpoint and then configuring it to return XML in the correct format to be 
+interpreted as RSS. Because all of the posts are available on the server side, we just loop through them all to give 
+key info about each post / project in their corresponding XML files.
+
+# Parting Thoughts
+This website isn't exactly what I'd describe as "finished." I'm not fully satisfied with the way the themes look at the 
+minute, and the high contrast themes aren't really high contrast as much as they are darker/lighter variants of the 
+original themes. I'm definitely going to be tinkering a lot with the way that this page looks going forward, especially 
+on mobile. I think that I also want to add a loading screen that displays over the page to mask certain effects that 
+only occur on initial page load, and I will probably tinker more with the styling that the posts themselves have. I 
+also will likely redo both the Blog and Projects pages, since they were originally placeholders for more helpful pages 
+that I never got around to designing. For now, though, I just wanted to get something out there. I hope you'll stick 
+along for the journey as the website improves alongside the amount and quality of content. If you have any suggestions 
+for improvements that I could make, feel free to email me at [jonah@bedouch.net](mailto:jonah@bedouch.net).

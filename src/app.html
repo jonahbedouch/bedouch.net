@@ -9,8 +9,7 @@
 	<meta name="viewport" content="width=device-width" />
 	%sveltekit.head%
 	<script>
-		var defaultTheme = '/css/themes/system.css'
-		var theme = localStorage.getItem(`theme-str`) || defaultTheme;
+		var theme = localStorage.getItem(`theme-str`) || '/css/themes/system.css';
 		document.getElementById('theme').href = theme;
 	</script>
 </head>
