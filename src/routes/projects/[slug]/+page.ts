@@ -8,13 +8,16 @@ export const load: PageLoad = async ({ params }) => {
         }
         else {
             const post = await import(`/content/projects/${params.slug}/index.svx`);
-            const { title, date } = post.metadata;
+            const { title, date, featureImage, excerpt } = post.metadata;
             const content = post.default;
         
             return {
                 content,
                 title,
                 date,
+                featureImage,
+                excerpt,
+                slug: params.slug
             };
         }
     }

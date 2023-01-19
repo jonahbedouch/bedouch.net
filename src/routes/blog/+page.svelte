@@ -15,6 +15,23 @@ import Rss from '$lib/icons/Rss.svelte';
 	};
 </script>
 
+<svelte:head>
+	<title>Jonah Bedouch - Blog</title>
+	<meta property="og:url" content="https://bedouch.net/blog">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="Blog">
+	<meta property="og:description" content="I'm Jonah Bedouch, a Berkeley EECS Major. Welcome to my online portfolio and blog.">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Jonah Bedouch">
+	<meta name="author" content="Jonah Bedouch">
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:domain" content="bedouch.net">
+	<meta name="twitter:url" content="https://bedouch.net/blog">
+	<meta name="twitter:title" content="Blog">
+	<meta name="twitter:description" content="I'm Jonah Bedouch, a Berkeley EECS Major. Welcome to my online portfolio and blog.">
+	<meta name="twitter:creator" content="@jonahbedouch">
+</svelte:head>
+
 <h1>Blog <a href="/rss/blog"><Rss /></a></h1>
 
 <div class="cards">

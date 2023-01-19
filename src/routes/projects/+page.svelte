@@ -17,6 +17,23 @@ const filterProjects = (project: Record<string, any>) => {
 export let data: any;
 </script>
 
+<svelte:head>
+  <title>Jonah Bedouch - Projects</title>
+  <meta property="og:url" content="https://bedouch.net/projects">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Projects">
+  <meta property="og:description" content="I'm Jonah Bedouch, a Berkeley EECS Major. Welcome to my online portfolio and blog.">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jonah Bedouch">
+  <meta name="author" content="Jonah Bedouch">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:domain" content="bedouch.net">
+  <meta name="twitter:url" content="https://bedouch.net/projects">
+  <meta name="twitter:title" content="Projects">
+  <meta name="twitter:description" content="I'm Jonah Bedouch, a Berkeley EECS Major. Welcome to my online portfolio and blog.">
+  <meta name="twitter:creator" content="@jonahbedouch">
+</svelte:head>
+
 <h1>Projects <a href="/rss/projects"><Rss /></a></h1>
 
 <div class="cards">
