@@ -15,8 +15,8 @@ export let description: string = "";
 </div>
 
 <style>
-    .container {
-        margin-top: 1.25rem;
+    .container:not(:nth-of-type(1)) {
+        margin-top: 1rem;
     }
     h1 {
         color: var(--focus-text);
@@ -24,7 +24,22 @@ export let description: string = "";
     span {
         font-weight: bold
     }
-    h1, h2, span {
+    h1, h2, span, p {
         margin: 0px;
     }
+
+    p {
+        text-align: justify;
+    }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+		.container {
+			margin-top: 1.25rem;
+		}
+
+        p {
+            text-align: center;
+        }
+	}
 </style>

@@ -26,4 +26,11 @@
         font-size: 3rem;
         margin: 0;
     }
+
+    /* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+		.projects-section {
+			margin: 1rem auto 0px;
+		}
+	}
 </style>

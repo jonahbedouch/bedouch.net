@@ -62,7 +62,7 @@
     /* Small devices (portrait tablets and large phones, 600px and up) */
 	@media only screen and (max-width: 767px) {
         .welcome-heading {
-            margin: 2rem auto;
+            margin: 1rem auto 0px;
         }
 
         .welcome {
