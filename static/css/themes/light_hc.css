@@ -1,14 +1,15 @@
 :root {
     --main-bg: #fff;
-    --bg-alt: rgb(225, 225, 225);
+    --bg-alt: #e1e1e1;
     --modal-bg: #fff;
     --border: #000;
     --underline: var(--border);
     --focus-text: #000;
-    --main-text: #262626;
+    --main-text: #000;
+    --subtext: #000;
     --nav-hover-bg: #d8d8d8;
     --highlight-gradiant: linear-gradient(60deg, #FBAE3C, #FA9845, #E9705A, #C55469, #96446E, #623965);
-    --browser-highlight: #C55469;
+    --browser-highlight: #000;
     --link-color: #C55469;
     --link-hover: #B23C52;
     --slider-unselected-bg: #ccc;

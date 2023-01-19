@@ -17,7 +17,7 @@
 
 <style>
     .projects-section {
-        margin: 2.5rem auto 0px;
+        margin: 1rem auto 0px;
         width: 100%;
     }
 
@@ -30,7 +30,7 @@
     /* Large devices (laptops/desktops, 992px and up) */
 	@media only screen and (min-width: 992px) {
 		.projects-section {
-			margin: 1rem auto 0px;
+			margin: 2.5rem auto 0px;
 		}
 
         .heading {

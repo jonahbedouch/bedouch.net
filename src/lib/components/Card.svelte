@@ -69,8 +69,8 @@
 		content: ' · ';
 	}
 
-	/* Large devices (laptops/desktops, 992px and up) */
-	@media only screen and (min-width: 992px) {
+	/* Medium devices */
+	@media only screen and (min-width: 768) {
 		.card {
 			margin: 0px 1.5rem 0px 0px;
 		}

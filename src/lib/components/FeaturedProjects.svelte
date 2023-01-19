@@ -30,15 +30,19 @@
         justify-content: center;
     }
 
+    /* Medium devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 768px) {
+		.small-center {
+			display: flex;
+			justify-content: left;
+		}
+	}
+
 	/* Large devices (laptops/desktops, 992px and up) */
 	@media only screen and (min-width: 992px) {
 		.projects-section {
 			margin: 2.5rem auto 0px;
 		}
-        .small-center {
-            display: flex;
-            justify-content: left;
-        }
 
         .heading {
             font-size: 3rem;

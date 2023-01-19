@@ -26,6 +26,15 @@ import Rss from '$lib/icons/Rss.svelte';
 <style>
 	.cards {
 		display: flex;
-		flex-direction: row;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/* Medium devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 768px) {
+		.cards {
+			flex-direction: row;
+			align-items: left;
+		}
 	}
 </style>

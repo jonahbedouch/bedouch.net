@@ -15,9 +15,14 @@ export let description: string = "";
 </div>
 
 <style>
+    .container:nth-of-type(1) {
+        margin-top: 0.5rem;
+    }
+    
     .container:not(:nth-of-type(1)) {
         margin-top: 1rem;
     }
+
     h1 {
         color: var(--focus-text);
         font-size: 1.7rem;
@@ -38,10 +43,6 @@ export let description: string = "";
 		.container {
 			margin-top: 1.25rem;
 		}
-
-        p {
-            text-align: center;
-        }
 
         h1 {
             font-size: 2rem;

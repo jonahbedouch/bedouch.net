@@ -1,17 +1,18 @@
 :root {
-    --main-bg: #000c16;
-    --bg-alt: #000a12;
-    --modal-bg: #001120;
-    --border: #000408;
-    --underline: #606060;
+    --main-bg: #000;
+    --bg-alt: #1b1b1b;
+    --modal-bg: #252525;
+    --border: #fff;
+    --underline: #fff;
     --focus-text: #fff;
-    --main-text: #d8d8d8;
-    --nav-hover-bg: #00192e;
+    --main-text: #e0e0e0;
+    --subtext: #c6c6c6;
+    --nav-hover-bg: #333;
     --highlight-gradiant: linear-gradient(60deg, #FBAE3C, #FA9845, #E9705A, #C55469, #96446E, #623965);
     --browser-highlight: #E9705A;
     --link-color: #E9705A;
     --link-hover: #E5573D;
     --slider-unselected-bg: #ccc;
     --slider-selected-bg: #E9705A;
-    --shadow: drop-shadow(0px 3px 8px rgba(0, 0, 0, 0.25));
+    --shadow: drop-shadow(0px 3px 8px rgba(255, 255, 255, 0.25));
 }

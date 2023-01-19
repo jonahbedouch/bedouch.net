@@ -7,7 +7,7 @@
 
 <footer>
     <div class="footer-content">
-        <p class="left">Made with ❤️ by Jonah Bedouch</p>
+        <p class="heart-text">Made with ❤️ by Jonah Bedouch</p>
         <ThemeButton />
         <ThemeModal />
     </div>
@@ -22,5 +22,9 @@
         display: flex;
         flex-direction: row;
         margin: auto;
+    }
+
+    .heart-text {
+        text-align: center;
     }
 </style>

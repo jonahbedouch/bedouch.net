@@ -7,23 +7,29 @@
     }
 </script>
 
-<button on:click={toggleThemeModal}>
+<button class="theme-btn" on:click={toggleThemeModal}>
     <svelte:component this={getIcon($theme)} />
 </button>
 
 <style>
-    button {
+    .theme-btn {
         background: transparent;
         border: none;
         font-size: 1.5rem;
         padding: 0px 1rem;
-        margin: 0.5rem;
         border-radius: 8px;
         color: var(--focus-text)
     }
 
-    button:hover {
+    .theme-btn:hover {
         cursor: pointer;
         background: var(--nav-hover-bg)
     }
+
+    /* Medium devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 768px) {
+		.theme-btn {
+            margin: 0.5rem;
+        }
+	}
 </style>

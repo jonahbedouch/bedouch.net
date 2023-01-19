@@ -12,7 +12,7 @@
 	.title {
 		font-size: 2rem;
 		text-align: center;
-		margin-top: 5rem;
+		margin-top: 2rem;
 		border: 0px;
 	}
 

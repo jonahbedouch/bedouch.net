@@ -24,6 +24,7 @@
     }
     
     .university {
+        margin-top: 0.5rem;
         margin-bottom: 0px;
         color: var(--focus-text);
         font-size: 1.7rem;
@@ -44,6 +45,7 @@
         }
 
         .university {
+            margin-top: 0.5rem;
             font-size: 2rem;
         }
 	}

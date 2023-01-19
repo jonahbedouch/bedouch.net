@@ -19,8 +19,24 @@ export let data: any;
 
 <h1>Projects <a href="/rss/projects"><Rss /></a></h1>
 
-<div>
+<div class="cards">
   {#each data.projects.filter(filterProjects) as project}
     <Card href={project.path} post={project}/>
   {/each}
 </div>
+
+<style>
+	.cards {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	/* Medium devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 768px) {
+		.cards {
+			flex-direction: row;
+			align-items: left;
+		}
+	}
+</style>
