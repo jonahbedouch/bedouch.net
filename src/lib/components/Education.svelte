@@ -19,13 +19,14 @@
 
     .heading {
         color: var(--focus-text);
-        font-size: 3rem;
+        font-size: 2rem;
         margin: 0;
     }
     
     .university {
         margin-bottom: 0px;
         color: var(--focus-text);
+        font-size: 1.7rem;
     }
 
     h1, p {
@@ -37,5 +38,13 @@
 		.projects-section {
 			margin: 2.5rem auto 0px;
 		}
+
+        .heading {
+            font-size: 3rem;
+        }
+
+        .university {
+            font-size: 2rem;
+        }
 	}
 </style>

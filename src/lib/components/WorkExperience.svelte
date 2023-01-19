@@ -23,7 +23,7 @@
 
     .heading {
         color: var(--focus-text);
-        font-size: 3rem;
+        font-size: 2rem;
         margin: 0;
     }
 
@@ -32,5 +32,9 @@
 		.projects-section {
 			margin: 1rem auto 0px;
 		}
+
+        .heading {
+            font-size: 3rem;
+        }
 	}
 </style>

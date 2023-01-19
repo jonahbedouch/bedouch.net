@@ -21,7 +21,7 @@
 
 	.heading {
 		color: var(--focus-text);
-		font-size: 3rem;
+		font-size: 2rem;
 		margin: 0 0 1rem;
 	}
 
@@ -38,6 +38,10 @@
         .small-center {
             display: flex;
             justify-content: left;
+        }
+
+        .heading {
+            font-size: 3rem;
         }
 	}
 </style>

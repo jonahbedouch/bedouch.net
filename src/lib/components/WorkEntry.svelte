@@ -20,6 +20,7 @@ export let description: string = "";
     }
     h1 {
         color: var(--focus-text);
+        font-size: 1.7rem;
     }
     span {
         font-weight: bold
@@ -40,6 +41,10 @@ export let description: string = "";
 
         p {
             text-align: center;
+        }
+
+        h1 {
+            font-size: 2rem;
         }
 	}
 </style>

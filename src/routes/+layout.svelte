@@ -32,7 +32,7 @@
 	<Header />
 	
 	{#key data.currentRoute}
-		<div in:fly={{ y: 50, duration: 150, delay: 150 }} out:fade={{ duration: 150 }}>
+		<div class="animator" in:fly={{ y: 50, duration: 150, delay: 150 }} out:fade={{ duration: 150 }}>
 			<main>
 				<slot />
 			</main>
@@ -40,3 +40,15 @@
 		</div>
 	{/key}
 </div>
+
+<style>
+	.animator {
+		display: flex;
+		flex-direction: column;
+		flex-grow: 1;
+	}
+
+	main {
+		flex-grow: 1;
+	}
+</style>

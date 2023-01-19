@@ -144,7 +144,7 @@
 	.modal {
 		position: fixed;
 		margin: auto;
-		padding: 3rem;
+		padding: 1rem;
 		background: var(--modal-bg);
 		height: fit-content;
 		z-index: 20;
@@ -179,6 +179,7 @@
 
 	.color-select, .options{
 		display: flex;
+		flex-direction: column;
 		align-items: center;
         margin-top: 1.5rem;
 	}
@@ -187,6 +188,7 @@
         display: flex;
         align-items: center;
         margin: auto;
+		margin-bottom: 1rem;
     }
 
     .option-label {
@@ -303,5 +305,16 @@
 
 	span {
 		font-size: 1.2rem;
+	}
+
+	/* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+		.modal {
+			padding: 3rem;
+		}
+		.color-select, .options {
+			flex-direction: row;
+		}
+		
 	}
 </style>

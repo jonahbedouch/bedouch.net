@@ -64,10 +64,6 @@
         .welcome-heading {
             margin: 1rem auto 0px;
         }
-
-        .welcome {
-            font-size: 2rem;
-        }
         
         .subheading {
             margin-top: 0.5rem;
@@ -84,6 +80,10 @@
 
         .icon:last-child {
             margin-right: auto;
+        }
+
+        .heading {
+            font-size: 2rem;
         }
 	}
 </style>

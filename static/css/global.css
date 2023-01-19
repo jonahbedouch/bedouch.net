@@ -25,6 +25,7 @@
 
 body {
     background-color: var(--main-bg);
+	margin: 0px;
 }
 
 p {
@@ -49,10 +50,12 @@ a:hover {
     max-width: 900px;
     height: 100vh;
     margin: 0 auto;
+	display: flex;
+	flex-direction: column;
 }
 
 .modal {
-	width: 95%;
+	width: 80%;
 	max-width: 100vh;
 }
 
@@ -69,6 +72,7 @@ a:hover {
 /* Large devices (laptops/desktops, 992px and up) */
 @media only screen and (min-width: 992px) {
     .content, .modal {
+		width: 95%;
         max-width: 1200px;
     }
 }

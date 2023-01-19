@@ -10,10 +10,16 @@
 	<h1>{post.meta.title}</h1>
 	<div class="tags">
 		{#each post.meta.tags as tag}
-			<span>{ tag }</span>
+			<span>{tag}</span>
 		{/each}
 	</div>
-	<span>{new Date(post.meta.date).toLocaleDateString(undefined, {day: 'numeric', month: 'long', year: 'numeric'})}</span>
+	<span
+		>{new Date(post.meta.date).toLocaleDateString(undefined, {
+			day: 'numeric',
+			month: 'long',
+			year: 'numeric'
+		})}</span
+	>
 </div>
 
 <style>
@@ -23,7 +29,7 @@
 		border-radius: 10px;
 		border: 1px solid var(--border);
 		background-color: var(--main-bg);
-		margin: 0px 1.5rem 0px 0px;
+		margin: 0px;
 		overflow: hidden;
 		width: 20rem;
 		height: 14rem;
@@ -35,7 +41,7 @@
 	}
 
 	.card:hover > img {
-		filter: contrast(90%)
+		filter: contrast(90%);
 	}
 
 	.card > h1 {
@@ -60,7 +66,13 @@
 	}
 
 	.tags > *:not(:last-child)::after {
-		content: " · "
+		content: ' · ';
 	}
 
+	/* Large devices (laptops/desktops, 992px and up) */
+	@media only screen and (min-width: 992px) {
+		.card {
+			margin: 0px 1.5rem 0px 0px;
+		}
+	}
 </style>
