@@ -1,5 +1,6 @@
 <script lang="ts">
-	import Rss from '$lib/icons/Rss.svelte';
+	import Card from '$lib/components/Card.svelte';
+import Rss from '$lib/icons/Rss.svelte';
 
 	export let data: { posts: Array<Record<string, any>>; filter: string };
 
@@ -16,15 +17,15 @@
 
 <h1>Blog <a href="/rss/blog"><Rss /></a></h1>
 
-<ul>
+<div class="cards">
 	{#each data.posts.filter(filterPost) as post}
-		<li>
-			<h2>
-				<a href={post.path}>
-					{post.meta.title}
-				</a>
-			</h2>
-			Published {post.meta.date}
-		</li>
+		<Card href={post.path} post={post}/>
 	{/each}
-</ul>
+</div>
+
+<style>
+	.cards {
+		display: flex;
+		flex-direction: row;
+	}
+</style>

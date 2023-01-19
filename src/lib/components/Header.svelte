@@ -176,7 +176,7 @@
 
 	#mobile-menu-toggle:checked ~ .mobile-menu {
 		height: 10rem;
-		border: 4px solid var(--border);
+		border: 1px solid var(--border);
 	}
 
 	/* Menu */

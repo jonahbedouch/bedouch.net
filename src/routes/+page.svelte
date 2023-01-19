@@ -1,10 +1,12 @@
-<script>
+<script lang="ts">
 	import Education from "$lib/components/Education.svelte";
 	import FeaturedBlogPosts from "$lib/components/FeaturedBlogPosts.svelte";
-import FeaturedProjects from "$lib/components/FeaturedProjects.svelte";
-import WelcomeHeading from "$lib/components/WelcomeHeading.svelte";
+    import FeaturedProjects from "$lib/components/FeaturedProjects.svelte";
+    import WelcomeHeading from "$lib/components/WelcomeHeading.svelte";
 	import WorkExperience from "$lib/components/WorkExperience.svelte";
 
+
+    export let data: any;
 </script>
 <svelte:head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,10 +21,10 @@ import WelcomeHeading from "$lib/components/WelcomeHeading.svelte";
 
 <div class="home-container">
     <WelcomeHeading />
-    <FeaturedProjects />
+    <FeaturedProjects projects={data.featuredProjects} />
     <WorkExperience />
     <Education />
-    <FeaturedBlogPosts />
+    <FeaturedBlogPosts posts={data.featuredPosts}/>
 </div>
 
 <style>

@@ -1,10 +1,13 @@
 ---
 title: Welcome to my Blog
 date: "2021-12-14"
-featureImage: images/comparison.png
-excerpt: ""
+featureImage: "/content/blog/welcome/images/campus_pointe.jpg"
+excerpt: "A little bit about me and the purpose of my blog."
 tags:
   - "trains"
+  - "eggs"
+  - "water bottle"
+  - "champagne"
 featured: true
 ---
 

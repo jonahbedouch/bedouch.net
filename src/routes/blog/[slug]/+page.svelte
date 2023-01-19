@@ -4,7 +4,7 @@
 
 <article class="blog">
 	<h1 class="title">{data.title}</h1>
-	<p class="datePublished">{new Date(data.date).toLocaleDateString()}</p>
+	<p class="datePublished">{new Date(data.date).toLocaleDateString(undefined, {day: 'numeric', month: 'long', year: 'numeric'})}</p>
 	<svelte:component this={data.content} />
 </article>
 
@@ -52,7 +52,7 @@
 		background-color: var(--bg-alt);
 		padding: 1rem;
 		border-radius: 15px;
-		border: 4px solid var(--border);
+		border: 1px solid var(--border);
 		font-size: 1.4rem;
 		margin-top: 2rem;
 	}

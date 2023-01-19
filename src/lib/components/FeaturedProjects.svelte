@@ -1,10 +1,17 @@
 <script lang="ts">
+	import Card from "./Card.svelte";
 
+
+    export let projects: Array<any>;
 </script>
 
 <div class="projects-section">
     <h1 class="heading">Projects.</h1>
-    <!-- Implementation of list of project cards with featured frontmatter tag -->
+    <div class="">
+        {#each projects as project}
+        <Card href={project.path} post={project}/>
+        {/each}
+    </div>
 </div>
 
 
@@ -17,6 +24,6 @@
     .heading {
         color: var(--focus-text);
         font-size: 3rem;
-        margin: 0;
+        margin: 0 0 1rem;
     }
 </style>

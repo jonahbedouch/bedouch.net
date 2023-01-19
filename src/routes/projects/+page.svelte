@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Card from "$lib/components/Card.svelte";
 import Rss from "$lib/icons/Rss.svelte";
 
 const filterProjects = (project: Record<string, any>) => {
@@ -18,15 +19,8 @@ export let data: any;
 
 <h1>Projects <a href="/rss/projects"><Rss /></a></h1>
 
-<ul>
-  {#each data.posts.filter(filterProjects) as project}
-    <li>
-      <h2>
-        <a href={project.path}>
-          {project.meta.title}
-        </a>
-      </h2>
-      Published {project.meta.date}
-    </li>
+<div>
+  {#each data.projects.filter(filterProjects) as project}
+    <Card href={project.path} post={project}/>
   {/each}
-</ul>
+</div>
