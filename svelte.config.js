@@ -12,7 +12,7 @@ import rehypeFigure from 'rehype-figure';
 const config = {
 	// Consult https://kit.svelte.dev/docs/integrations#preprocessors
 	// for more information about preprocessors
-	extensions: ['.svelte', '.svx'],
+	extensions: ['.svelte', '.mdx'],
 
 	preprocess: [
 		vitePreprocess({
@@ -21,7 +21,7 @@ const config = {
 			}
 		}),
 		mdsvex({
-			extensions: ['.svx'],
+			extensions: ['.mdx'],
 			remarkPlugins: [
 				remarkEmbedImages
 			],

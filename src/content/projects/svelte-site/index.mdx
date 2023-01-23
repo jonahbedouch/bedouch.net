@@ -22,7 +22,7 @@ how their blog works, and much of this site takes inspiration from it, although 
 # How Does the Site Work?
 This website is built as a Svelte project using Svelte component-enhanced markdown through mdsvex. The home page of the 
 site is written purely in Svelte and styled with CSS. This is also true of the general Blog and Project pages. The blog 
-posts and project writeups are written in `.svx` files, which are component-enhanced markdown files similar to traditional 
+posts and project writeups are written in `.mdx` files, which are component-enhanced markdown files similar to traditional 
 `.mdx` files in React. This markdown is fed through some remark and rehype plugins for formatting, then made available 
 to Svelte through a SvelteKit server-only api endpoint. From there, when a user queries the `blogs/[slug]` path or the 
 `projects/[slug]` path the page sends a request to the endpoint for the relevant markdown content, then loads it alongside 
