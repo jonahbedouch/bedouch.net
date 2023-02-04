@@ -13,7 +13,7 @@ const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unk
     const allPosts = await Promise.all(
         iterablePostFiles.map(async ([path, resolver]) => {
             const { metadata } = await resolver()
-            const postPath = path.slice(13,-10)
+            const postPath = path.slice(12,-10)
 
 
             return {
@@ -27,11 +27,11 @@ const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unk
 }
 
 export const fetchBlogPosts = async () => {
-    return await fetchMarkdownPosts(import.meta.glob('/src/content/blog/**/index.mdx'))
+    return await fetchMarkdownPosts(import.meta.glob('/src/routes/blog/**/index.mdx'))
 }
 
 export const fetchProjects = async () => {
-    return await fetchMarkdownPosts(import.meta.glob('/src/content/projects/**/index.mdx'))
+    return await fetchMarkdownPosts(import.meta.glob('/src/routes/projects/**/index.mdx'))
 }
 
 export const getMetaType = (data: Array<{'path': string, 'meta': Record<string, string>}>, metaType: string, required = true) => {
