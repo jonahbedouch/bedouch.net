@@ -1,6 +1,6 @@
 ---
 title: Personal Website
-date: "2023-01-19"
+date: "2023-02-20"
 excerpt: ""
 tags:
   - "Web"
@@ -21,12 +21,10 @@ how their blog works, and much of this site takes inspiration from it, although 
 # How Does the Site Work?
 This website is built as a Svelte project using Svelte component-enhanced markdown through mdsvex. The home page of the 
 site is written purely in Svelte and styled with CSS. This is also true of the general Blog and Project pages. The blog 
-posts and project writeups are written in `.mdx` files, which are component-enhanced markdown files similar to traditional 
-`.mdx` files in React. This markdown is fed through some remark and rehype plugins for formatting, then made available 
-to Svelte through a SvelteKit server-only api endpoint. From there, when a user queries the `blogs/[slug]` path or the 
-`projects/[slug]` path the page sends a request to the endpoint for the relevant markdown content, then loads it alongside 
-the necessary styling for the page. This is the bulk of the core functionality of the site, but there are also some fun 
-additional features which I included while designing it.
+posts and project writeups are written in `.svx` files, which are component-enhanced markdown files similar to traditional 
+`.mdx` files in React. This markdown is fed through some remark and rehype plugins for formatting, and then loaded with a 
+page template by mdsvex when the corresponding slug's path is navigated to. This is the bulk of the core functionality of 
+the site, but there are also some fun additional features which I included while designing it.
 
 ## Custom Theming
 The entire site is reactively themed using a set of CSS variables. Because of this, customizing the theme is quite 
@@ -79,9 +77,9 @@ original themes. I'm definitely going to be tinkering a lot with the way that th
 on mobile. I think that I also want to add a loading screen that displays over the page to mask certain effects that 
 only occur on initial page load, and I will probably tinker more with the styling that the posts themselves have. I 
 also will likely redo both the Blog and Projects pages, since they were originally placeholders for more helpful pages 
-that I never got around to designing. For now, though, I just wanted to get something out there. I hope you'll stick 
-along for the journey as the website improves alongside the amount and quality of content. If you have any suggestions 
-for improvements that I could make, feel free to email me at [jonah@bedouch.net](mailto:jonah@bedouch.net).
+that I never got around to designing (hence the filters). For now, though, I just wanted to get something out there. I 
+hope you'll stick along for the journey as the website improves alongside the amount and quality of content. If you have 
+any suggestions for improvements that I could make, feel free to email me at [jonah@bedouch.net](mailto:jonah@bedouch.net).
 
 <script context="module">
     import cover from "./images/website-thumb.webp";
