@@ -248,10 +248,10 @@ code.language-markup .token.script .token.keyword {
 }
 
 .title {
-	font-size: 2rem;
-	text-align: center;
-	margin-top: 2rem;
-	border: 0px;
+	font-size: 2rem!important;
+	text-align: center!important;
+	margin-top: 2rem!important;
+	border: 0px!important;
 }
 
 .datePublished {
@@ -273,6 +273,7 @@ code.language-markup .token.script .token.keyword {
 	background-image: var(--highlight-gradiant);
 	background-size: 150%;
 	background-clip: text;
+	-webkit-background-clip: text;
 	background-position: left;
 	transition: background-position 0.5s, opacity 0.1s;
 }
@@ -284,21 +285,6 @@ code.language-markup .token.script .token.keyword {
 
 :where(h1, h2, h3, h4, h5, h6) .heading-anchor:hover::after {
 	background-position: right;
-}
-
-.toc {
-	background-color: var(--bg-alt);
-	padding: 1rem;
-	border-radius: 15px;
-	border: 1px solid var(--border);
-	font-size: 1.4rem;
-	margin-top: 2rem;
-}
-
-.toc::before {
-	content: 'Table of Contents';
-	font-size: 1.4rem;
-	font-weight: bold;
 }
 
 .blog h1, .project h1 {
@@ -336,23 +322,6 @@ code.language-markup .token.script .token.keyword {
 .blog p, .project p {
 	font-size: 1.2rem;
 	margin: 0px 0px 1rem;
-}
-
-.toc > ol {
-	list-style-type: disc;
-	margin: 0.5rem 0px 0px;
-}
-
-li > ol {
-	list-style-type: circle;
-}
-
-.toc-link {
-	color: var(--main-text);
-}
-
-.toc-link:hover {
-	color: var(--link-hover);
 }
 
 figure {

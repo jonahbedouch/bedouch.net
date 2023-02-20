@@ -56,7 +56,8 @@
     .icon:hover {
         color: transparent;
         background-image: var(--highlight-gradiant);
-        background-clip: text; 
+        background-clip: text;
+        -webkit-background-clip: text;
     }
 
     /* Small devices (portrait tablets and large phones, 600px and up) */

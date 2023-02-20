@@ -4,7 +4,6 @@ import Moon from "$lib/icons/Moon.svelte"
 import Sun from "$lib/icons/Sun.svelte"
 import type { ThemeOptions } from "$lib/shared/stores/theme"
 import { error } from "@sveltejs/kit"
-import type { HtmlElementNode } from "rehype-toc"
 
 const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unknown>>) => {
     
@@ -150,4 +149,10 @@ export const getIcon = (theme: ThemeOptions) => {
         case "/css/themes/system_hc.css":
             return Adjust;
     }
+}
+
+export interface Heading {
+    title: string;
+    path: string;
+    items: Array<Heading>;
 }

@@ -1,11 +1,13 @@
 <script>
 	// @ts-nocheck
+	import TableOfContents from "$lib/components/TableOfContents.svelte";
 
 	export let title;
 	export let date;
 	export let slug;
 	export let excerpt;
 	export let featureImage;
+	export let headings;
 </script>
 
 
@@ -27,8 +29,9 @@
 	<meta name="twitter:creator" content="@jonahbedouch">
 </svelte:head>
 
-<article class="project">
+<main class="project">
 	<h1 class="title">{title}</h1>
 	<p class="datePublished">{new Date(date).toLocaleDateString(undefined, {day: 'numeric', month: 'long', year: 'numeric'})}</p>
+	<TableOfContents headings={headings}></TableOfContents>
 	<slot />
-</article>
+</main>

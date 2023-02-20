@@ -52,6 +52,7 @@
 		background-image: var(--highlight-gradiant);
 		background-size: 150%;
 		background-clip: text;
+		-webkit-background-clip: text;
 		background-position: left;
 		transition: background-position 0.5s;
 
@@ -70,6 +71,7 @@
 		border-radius: 8px;
 		background-image: none;
 		background-clip: border-box;
+		-webkit-background-clip: border-box;
 	}
 
 	.nav-item:hover {
@@ -86,6 +88,7 @@
 		font-weight: bold;
 		transition: all 0.5s;
 		background-clip: text;
+		-webkit-background-clip: text;
 		color: transparent;
 		background-image: var(--highlight-gradiant);
 		background-size: 150%;

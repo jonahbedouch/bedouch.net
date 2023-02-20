@@ -32,11 +32,12 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"mdast-util-to-string": "^3.1.1",
 		"mdsvex-relative-images": "^1.0.3",
 		"rehype-autolink-headings": "^6.1.1",
 		"rehype-figure": "^1.0.1",
 		"rehype-slug": "^5.1.0",
-		"rehype-toc": "^3.0.2",
-		"remark-collapse": "^0.1.2"
+		"remark-collapse": "^0.1.2",
+		"unist-util-visit": "^4.1.2"
 	}
 }
