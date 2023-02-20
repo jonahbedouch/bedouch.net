@@ -1,7 +1,8 @@
 import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import autoprefixer from 'autoprefixer';
-import { mdsvex } from 'mdsvex'
+import { mdsvex } from 'mdsvex';
+import { join } from "path";
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkEmbedImages from 'mdsvex-relative-images';
 import rehypeSlug from 'rehype-slug';
@@ -22,6 +23,10 @@ const config = {
 		}),
 		mdsvex({
 			extensions: ['.mdx'],
+			layout: {
+				"blog": "./src/routes/blog/post.svelte",
+				"projects": "./src/routes/projects/post.svelte",
+			},
 			remarkPlugins: [
 				remarkEmbedImages
 			],

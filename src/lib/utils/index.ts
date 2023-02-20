@@ -27,11 +27,11 @@ const fetchMarkdownPosts = async (allPostFiles: Record<string, () => Promise<unk
 }
 
 export const fetchBlogPosts = async () => {
-    return await fetchMarkdownPosts(import.meta.glob('/src/routes/blog/**/index.mdx'))
+    return await fetchMarkdownPosts(import.meta.glob('/src/routes/blog/**/+page.mdx'))
 }
 
 export const fetchProjects = async () => {
-    return await fetchMarkdownPosts(import.meta.glob('/src/routes/projects/**/index.mdx'))
+    return await fetchMarkdownPosts(import.meta.glob('/src/routes/projects/**/+page.mdx'))
 }
 
 export const getMetaType = (data: Array<{'path': string, 'meta': Record<string, string>}>, metaType: string, required = true) => {
