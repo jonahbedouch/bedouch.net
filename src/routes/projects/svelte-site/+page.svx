@@ -1,7 +1,6 @@
 ---
 title: Personal Website
 date: "2023-01-19"
-featureImage: "/src/routes/projects/svelte-site/images/website-thumb.webp"
 excerpt: ""
 tags:
   - "Web"
@@ -83,3 +82,8 @@ also will likely redo both the Blog and Projects pages, since they were original
 that I never got around to designing. For now, though, I just wanted to get something out there. I hope you'll stick 
 along for the journey as the website improves alongside the amount and quality of content. If you have any suggestions 
 for improvements that I could make, feel free to email me at [jonah@bedouch.net](mailto:jonah@bedouch.net).
+
+<script context="module">
+    import cover from "./images/website-thumb.webp";
+    metadata.featureImage = cover;
+</script>

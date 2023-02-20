@@ -1,7 +1,6 @@
 ---
 title: Welcome to my Blog
 date: "2023-01-19"
-featureImage: "/src/routes/blog/welcome/images/campus_pointe.jpg"
 excerpt: "A little bit about me and the purpose of my blog."
 tags: []
 featured: true
@@ -79,3 +78,8 @@ posts. I'm not too sure how frequently I'll be posting, but I'll try to at least
 If there is anything in particular you would like me to talk about, or if you have any questions or suggestions for me, 
 feel free to email me at [jonah@bedouch.net](mailto:jonah@bedouch.net). I love chatting about things, so I'd be elated
 if you did.
+
+<script context="module">
+    import cover from "./images/campus_pointe.jpg";
+    metadata.featureImage = cover;
+</script>
