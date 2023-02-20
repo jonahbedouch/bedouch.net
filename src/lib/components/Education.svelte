@@ -7,7 +7,7 @@
 <div class="projects-section">
     <h1 class="heading">Education.</h1>
     <h1 class="university">University of California, Berkeley</h1>
-    <p>Electrical&nbsp;Engineering&nbsp;and Computer&nbsp;Science, B.Sc •&nbsp;Mathematics&nbsp;Minor •&nbsp;Anticipated&nbsp;Graduation:&nbsp;2026 •&nbsp;GPA:&nbsp;4.0</p>
+    <p>Electrical&nbsp;Engineering&nbsp;and Computer&nbsp;Science, B.Sc •&nbsp;Anticipated&nbsp;Graduation:&nbsp;2026 •&nbsp;GPA:&nbsp;4.0</p>
 </div>
 
 
