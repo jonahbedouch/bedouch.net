@@ -11,9 +11,9 @@
 <div class="welcome-heading">
     <div class="">
         <h1 class="heading">Hi, I'm Jonah Bedouch.</h1>
-        <h2 class="subheading">I'm a passionate software developer, public transit enthusiast, and coffee addict. I love learning and trying new things. I'm currently pursuing an <strong class="focus-text">Electrical Engineering and Computer Sciences B.S. at UC Berkeley</strong> and working on <strong class="focus-text">Customer Engineering at Bosch US</strong> for Nevonex. I've primarily worked on full stack development and backend programming with Typescript and Python in the past.</h2>
+        <h2 class="subheading">I'm a passionate software developer, public transit enthusiast, and coffee addict. I love learning and trying new things. I'm currently pursuing an <strong class="focus-text">Electrical Engineering and Computer Sciences B.S. at UC Berkeley</strong>. I most recently worked on <strong class="focus-text">Customer Engineering for Nevonex at Bosch US</strong>. I've primarily worked on full stack development and backend programming with Typescript and Python in the past.</h2>
         <div class="social-media">
-            <a href="https://sfba.social/@jonahbedouch" class="icon" rel="external"><Mastodon /></a>
+            <a href="https://sfba.social/@jonahbedouch" class="icon" rel="external me"><Mastodon /></a>
             <a href="https://github.com/jonahbedouch" class="icon" rel="external"><Github /></a>
             <a href="https://linkedin.com/in/jonahbedouch" class="icon" rel="external"><LinkedIn /></a>
             <a href="https://instagram.com/jonahbedouch" class="icon" rel="external"><Instagram /></a>
