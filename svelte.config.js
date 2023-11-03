@@ -2,11 +2,13 @@ import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/kit/vite';
 import autoprefixer from 'autoprefixer';
 import { mdsvex } from 'mdsvex';
+import { imagePreprocessor } from 'svimg';
 import { join } from "path";
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import remarkEmbedImages from 'mdsvex-relative-images';
 import rehypeSlug from 'rehype-slug';
 import rehypeFigure from 'rehype-figure';
+import { rehypeSvimg } from 'rehype-svimg';
 
 function get_headings() {
 	let visit;
@@ -60,7 +62,8 @@ const config = {
 			rehypePlugins: [
 				rehypeSlug,
 				[rehypeAutolinkHeadings, { behavior: 'append', properties: { ariaHidden: true, tabIndex: -1, class: 'heading-anchor' } }],
-				rehypeFigure
+				rehypeFigure,
+				[rehypeSvimg, { inputDir: 'static', outputDir: 'static/g', webp: true, avif: true }]
 			]
 		})
 	],
@@ -68,7 +71,6 @@ const config = {
 	kit: {
 		adapter: adapter()
 	},
-
 };
 
 export default config;
