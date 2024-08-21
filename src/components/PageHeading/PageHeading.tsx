@@ -1,20 +1,39 @@
-import { CategoryDescriptions } from '@/helpers/frontmatter.helper';
+import { BlogCategoryDescriptions, ProjectCategoryDescriptions } from '@/helpers/frontmatter.helper';
 import { SectionH1 } from '@/helpers/mdx.helper';
 import * as React from 'react';
 import UnfilterLink from './UnfilterLink';
 
 type Props = {
-  appliedCategory: keyof typeof CategoryDescriptions | undefined;
+  appliedCategory: keyof typeof ProjectCategoryDescriptions | keyof typeof BlogCategoryDescriptions | undefined;
   appliedTags: string[] | undefined;
   page: 'blog' | 'projects';
 }
 
 function PageHeading(props: Props) {
+
+  const getCategoryDescription = () => {
+    if (props.page === 'blog') {
+      return props.appliedCategory && props.appliedCategory in BlogCategoryDescriptions ? BlogCategoryDescriptions[props.appliedCategory as keyof typeof BlogCategoryDescriptions] :
+        "Some blurb about the blog.";
+    }
+    else {
+      return props.appliedCategory && props.appliedCategory in ProjectCategoryDescriptions ? ProjectCategoryDescriptions[props.appliedCategory as keyof typeof ProjectCategoryDescriptions] :
+        "Some blurb about the projects page.";
+    }
+  }
+
+  const getTitle = () => {
+    if (props.page === 'blog') {
+      return `Recent Posts ${props.appliedCategory ? `in ${props.appliedCategory}` : ``}`
+    } else {
+      return `Recent Projects ${props.appliedCategory ? `in ${props.appliedCategory}` : ``}`
+    }
+  }
+
+
   return <>
-    <SectionH1>
-      Recent Posts {props.appliedCategory ? `in ${props.appliedCategory}` : ``}
-    </SectionH1>
-    <p className='mt-2'>{props.appliedCategory && props.appliedCategory in CategoryDescriptions ? CategoryDescriptions[props.appliedCategory] : "Some blurb about my blog"}</p>
+    <SectionH1>{getTitle()}</SectionH1>
+    <p className='mt-2'>{getCategoryDescription()}</p>
     {props.appliedTags ? <p className="m-0 p-0 italic text-sm text-secondary-800 dark:text-secondary-400">
       Filtering by {props.appliedTags.map((val, i) => [i > 0 && ", ", <UnfilterLink key={`${props.page}-unlink-tag-${val}`} page={props.page} tagName={val} />])}
     </p> : <></>}

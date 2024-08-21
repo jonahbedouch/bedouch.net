@@ -3,7 +3,7 @@ import ContentCard from "@/components/ContentCard";
 import HomeSection from "@/components/HomeSection";
 import PageHeading from "@/components/PageHeading";
 import Tag from "@/components/Tag";
-import { CategoryDescriptions, getCachedRecentPosts, getCachedSidebarContent } from "@/helpers/frontmatter.helper";
+import { BlogCategoryDescriptions, getCachedRecentPosts, getCachedSidebarContent } from "@/helpers/frontmatter.helper";
 import { SectionH1 } from "@/helpers/mdx.helper";
 import dynamic from "next/dynamic";
 import Link from "next/link";
@@ -12,7 +12,7 @@ import { Suspense } from "react";
 export default async function Blog({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   console.log(searchParams)
   let appliedTags: string[] | undefined = undefined;
-  let appliedCategory: keyof typeof CategoryDescriptions | undefined = undefined;
+  let appliedCategory: keyof typeof BlogCategoryDescriptions | undefined = undefined;
   if ('filter' in searchParams && searchParams.filter !== undefined) {
     if (typeof searchParams.filter === 'string') {
       appliedTags = [searchParams.filter];
@@ -23,11 +23,11 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
 
   if ('category' in searchParams && searchParams.category !== undefined) {
     if (typeof searchParams.category === 'string') {
-      if (searchParams.category in CategoryDescriptions) {
-        appliedCategory = searchParams.category as keyof typeof CategoryDescriptions;
+      if (searchParams.category in BlogCategoryDescriptions) {
+        appliedCategory = searchParams.category as keyof typeof BlogCategoryDescriptions;
       }
-    } else if (searchParams.category.length !== 0 && searchParams.category[0] in CategoryDescriptions) {
-      appliedCategory = searchParams.category[0] as keyof typeof CategoryDescriptions;
+    } else if (searchParams.category.length !== 0 && searchParams.category[0] in BlogCategoryDescriptions) {
+      appliedCategory = searchParams.category[0] as keyof typeof BlogCategoryDescriptions;
     }
   }
 
@@ -36,9 +36,8 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
 
   return (
     <div className="w-full grid grid-cols-12">
-      <main className="h-full lg:py-sm px-sm py-md mt-3xs-xl md:col-span-8 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5">
+      <main className="lg:py-sm px-sm py-md mt-3xs-xl md:col-span-8 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5">
         <PageHeading page="blog" appliedCategory={appliedCategory} appliedTags={appliedTags} />
-
 
         <aside className="mt-4 md:hidden md:invisible visible grid grid-cols-2 h-min rounded-lg border-2 p-2 border-secondary-1000 dark:border-secondary-900 ring-opacity-5" aria-label="filter results">
           <div className="">

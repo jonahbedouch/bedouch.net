@@ -5,11 +5,16 @@ import 'server-only';
 
 // The categories that appear on the sidebar are NOT based on this - they are 
 // every category that is actually returned by a sweep of every post's frontmatter.
-export const CategoryDescriptions = {
+export const BlogCategoryDescriptions = {
     "Musings": "Not all things worth saying are easy to categorize. This section consists of any random thoughts, opinions, and ideas that I have.",
 };
 
-export interface BlogFrontmatter {
+export const ProjectCategoryDescriptions = {
+    "Musings": "Not all things worth saying are easy to categorize. This section consists of any random thoughts, opinions, and ideas that I have.",
+    "Balls": ""
+};
+
+export interface Frontmatter {
     published: boolean;
     thumbnail?: string;
     title: string;
@@ -17,12 +22,23 @@ export interface BlogFrontmatter {
     publishDate: string;
     lastUpdated: string;
     featured: boolean;
-    category: keyof typeof CategoryDescriptions;
+    category: string;
     tags: string[];
     excerpt: string;
 }
 
-function validateBlogFrontmatter(x: any): x is BlogFrontmatter {
+export interface BlogFrontmatter extends Frontmatter {
+    category: keyof typeof BlogCategoryDescriptions;
+}
+
+export interface ProjectFrontmatter extends Frontmatter {
+    category: keyof typeof ProjectCategoryDescriptions;
+}
+
+
+type TFrontmatter<T> = T extends 'projects' ? ProjectFrontmatter : BlogFrontmatter;
+
+function validateFrontmatter(x: any): x is Frontmatter {
     return 'published' in x && 'title' in x && 'slug' in x && 'publishDate' in x && 'featured' in x && 'category' in x && 'tags' in x && 'excerpt' in x && 'lastUpdated' in x &&
         typeof x.published === 'boolean' && typeof x.slug === 'string' && typeof x.publishDate === 'string' && typeof x.featured === 'boolean' &&
         typeof x.category === 'string' && typeof x.tags === 'object' && typeof x.excerpt === 'string' && typeof x.lastUpdated === 'string'
@@ -36,16 +52,16 @@ async function getPostPaths(base: string) {
 export const getCachedPostPaths = cache(getPostPaths);
 export const cachedReadFile = cache(fs.readFile);
 
-export async function getBlogSlugs() {
-    const posts = await getCachedPostPaths('blog')
+export async function getSlugs<T extends 'projects' | 'blog'>(type: T) {
+    const posts = await getCachedPostPaths(type);
     const slugs = [];
 
     for (const post of posts) {
         try {
-            const data = await cachedReadFile(`${process.cwd()}/content/blog/${post}`);
-            const serial = await serialize<{}, BlogFrontmatter>(data.toString(), { parseFrontmatter: true });
+            const data = await cachedReadFile(`${process.cwd()}/content/${type}/${post}`);
+            const serial = await serialize<{}, TFrontmatter<T>>(data.toString(), { parseFrontmatter: true });
 
-            if (validateBlogFrontmatter(serial.frontmatter) && serial.frontmatter.published) {
+            if (validateFrontmatter(serial.frontmatter) && serial.frontmatter.published) {
                 slugs.push(serial.frontmatter.slug);
             }
         }
@@ -57,15 +73,15 @@ export async function getBlogSlugs() {
     return slugs;
 }
 
-export async function getBlogLocation(slug: string) {
-    const posts = await getCachedPostPaths('blog')
+export async function getFileLocation<T extends 'projects' | 'blog'>(type: T, slug: string) {
+    const posts = await getCachedPostPaths(type);
     for (const post of posts) {
         try {
-            const data = await cachedReadFile(`${process.cwd()}/content/blog/${post}`);
-            const serial = await serialize<{}, BlogFrontmatter>(data.toString(), { parseFrontmatter: true });
+            const data = await cachedReadFile(`${process.cwd()}/content/${type}/${post}`);
+            const serial = await serialize<{}, TFrontmatter<T>>(data.toString(), { parseFrontmatter: true });
 
-            if (validateBlogFrontmatter(serial.frontmatter) && serial.frontmatter.published && serial.frontmatter.slug === slug) {
-                return `${process.cwd()}/content/blog/${post}`;
+            if (validateFrontmatter(serial.frontmatter) && serial.frontmatter.published && serial.frontmatter.slug === slug) {
+                return `${process.cwd()}/content/${type}/${post}`;
             }
         }
         catch {
@@ -76,16 +92,17 @@ export async function getBlogLocation(slug: string) {
     return null;
 }
 
-export async function getRecentPosts(base: string, category: keyof typeof CategoryDescriptions | undefined, tags: string[] | undefined) {
-    const posts = await getCachedPostPaths(base);
-    const recent = [];
+
+export async function getRecentPosts<T extends 'projects' | 'blog'>(type: T, category: (typeof type extends "projects" ? keyof typeof ProjectCategoryDescriptions : keyof typeof BlogCategoryDescriptions) | undefined, tags: string[] | undefined) {
+    const posts = await getCachedPostPaths(type);
+    const recent: TFrontmatter<T>[] = [];
 
     mainLoop: for (const post of posts) {
         try {
-            const data = await cachedReadFile(`${process.cwd()}/content/${base}/${post}`);
+            const data = await cachedReadFile(`${process.cwd()}/content/${type}/${post}`);
             const serial = await serialize<{}, BlogFrontmatter>(data.toString(), { parseFrontmatter: true });
 
-            if (validateBlogFrontmatter(serial.frontmatter)) {
+            if (validateFrontmatter(serial.frontmatter)) {
                 let isCorrectCategory = category === undefined || serial.frontmatter.category.toLowerCase() === category.toLowerCase();
 
                 if (serial.frontmatter.published && isCorrectCategory) {
@@ -119,18 +136,18 @@ export async function getRecentPosts(base: string, category: keyof typeof Catego
 }
 
 // Separated from the other one for cacheing... This doesn't change!
-export async function getSidebarContent(base: string) {
+export async function getSidebarContent<T extends 'projects' | 'blog'>(base: T) {
     const posts = await getCachedPostPaths(base);
-    const frontmatters = [];
+    const frontmatters: TFrontmatter<T>[] = [];
     const categories = new Set<string>();
     const tagDict: Record<string, number> = {};
 
     for (const post of posts) {
         try {
             const data = await cachedReadFile(`${process.cwd()}/content/${base}/${post}`);
-            const serial = await serialize<{}, BlogFrontmatter>(data.toString(), { parseFrontmatter: true });
+            const serial = await serialize<{}, TFrontmatter<T>>(data.toString(), { parseFrontmatter: true });
 
-            if (validateBlogFrontmatter(serial.frontmatter)) {
+            if (validateFrontmatter(serial.frontmatter)) {
                 if (serial.frontmatter.published && serial.frontmatter.featured) {
                     frontmatters.push(serial.frontmatter);
                 }
@@ -174,7 +191,7 @@ export async function getSidebarContent(base: string) {
     };
 }
 
-export const getCachedBlogSlugs = cache(getBlogSlugs);
-export const getCachedBlogLocation = cache(getBlogLocation);
+export const getCachedSlugs = cache(getSlugs);
+export const getCachedFileLocation = cache(getFileLocation);
 export const getCachedSidebarContent = cache(getSidebarContent);
 export const getCachedRecentPosts = cache(getRecentPosts);
