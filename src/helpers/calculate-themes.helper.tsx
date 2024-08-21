@@ -22,6 +22,9 @@ export function calculateSeasonal() {
             }
             break;
         case 7: // August
+            if (day >= 0 && day <= 31) {
+                theme = 'america'
+            }
             break;
         case 8: // September
             break;

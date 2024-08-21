@@ -118,7 +118,7 @@ export function ThemeSelector(props: { className?: string }) {
 
     return (
         <Popover className="relative flex align-middle">
-            <PopoverButton ><ThemeIcon theme={theme} variant={variant} /></PopoverButton>
+            <PopoverButton aria-label="Open Theme Menu" ><ThemeIcon theme={theme} variant={variant} /></PopoverButton>
             <PopoverPanel transition anchor="top"
                 className="overflow-hidden rounded-lg ease-in-out shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-10 [--anchor-gap:16px] transition data-[enter]:duration-200 data-[enter]:ease-out data-[leave]:duration-150 data-[leave]:ease-in data-[closed]:opacity-0 data-[closed]:scale-90 data-[open]:opacity-100 data-[open]:scale-100"
             >

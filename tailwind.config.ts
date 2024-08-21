@@ -9,7 +9,8 @@ const config: Config = {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/hooks/**/*.{js,ts,jsx,tsx,mdx}",
-    "./content/**/*.{js,ts,jsx,tsx,mdx}"
+    './src/helpers/**/*.{js,ts,jsx,tsx,mdx}',
+    "./content/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     fontSize: {
@@ -81,7 +82,12 @@ const config: Config = {
         'shadow-color': {
           DEFAULT: 'hsl(0deg 0% 58%)',
           dark: 'hsl(240deg 17% 0%)'
+        },
+        'codeblock-bg': {
+          light: colors.zinc[100],
+          dark: colors.zinc[900]
         }
+
       },
       'america': {
         'primary': colors.red,
@@ -93,6 +99,10 @@ const config: Config = {
         'shadow-color': {
           DEFAULT: 'hsl(214deg 30% 60%)',
           dark: 'hsl(227deg 83% 9%)'
+        },
+        'codeblock-bg': {
+          light: '#f5f7fc',
+          dark: '#0e1734'
         }
       }
     }, {
