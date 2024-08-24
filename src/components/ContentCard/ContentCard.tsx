@@ -23,7 +23,7 @@ async function ContentCard(props: Props) {
   const path = props.type === 'project' ? 'projects' : 'blog'
 
   return <article className=''>
-    <Link href={`/${path}/${props.frontmatter.slug}`} className='rounded-lg bg-secondary-100 hover:bg-secondary-0 dark:base:bg-secondary-900 dark:bg-secondary-950 dark:base:hover:bg-secondary-1000 dark:hover:bg-secondary-1000 border border-secondary-700 dark:border-secondary-500 my-2 lg:pl-2 p-1 group flex flex-row relative h-40 w-full hover:shadow-low dark:hover:shadow-d-low transition-all duration-200'>
+    <Link href={`/${path}/${props.frontmatter.slug}`} className='rounded-lg bg-secondary-100 hover:bg-secondary-0 dark:base:bg-secondary-900 dark:bg-secondary-950 dark:base:hover:bg-secondary-1000 dark:hover:bg-secondary-1000 border border-secondary-700 dark:border-secondary-500 mt-4 mb-2 lg:pl-2 p-1 group flex flex-row relative h-40 w-full hover:shadow-low dark:hover:shadow-d-low transition-all duration-200'>
       <div className="flex-col flex-grow w-1">
         <span className='line-clamp-1 text-secondary-700 dark:text-secondary-400 group-hover:text-primary-800 dark:group-hover:text-primary-300'>
           <span className='font-medium sm:mr-0 mr-auto'><span className="sr-only">Category: </span>{props.frontmatter.category}</span>
@@ -31,7 +31,7 @@ async function ContentCard(props: Props) {
             [<span key={`${props.frontmatter.slug}-bar`} className='mx-1 font-medium' aria-hidden>|</span>, <span key={`${props.frontmatter.slug}-tags`}><span className='sr-only'>Tags: </span>{props.frontmatter.tags.join(" · ")}</span>]
             : <></>}
         </span>
-        <h2 className='text-xl font-medium font-lato leading-tight'>{props.frontmatter.title}</h2>
+        <h2 className='text-xl font-medium font-lato leading-tight'><span className='sr-only'>Title: </span>{props.frontmatter.title}</h2>
         <span className='text-secondary-700 dark:text-secondary-400'><span className='sr-only'>Published on: </span>{pubdate.toLocaleDateString('en-US', { month: "long", day: "numeric", year: "numeric" })}</span>
 
         <p className="mt-1 line-clamp-2 w-full leading-tight">

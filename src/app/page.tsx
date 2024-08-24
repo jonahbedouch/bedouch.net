@@ -2,6 +2,7 @@ import HomeSection from "@/components/HomeSection";
 import { cachedReadFile } from "@/helpers/frontmatter.helper";
 import Hero from "@components/Hero";
 import { promises as fs } from 'fs';
+import { Suspense } from "react";
 
 export const metadata = {
   title: 'Jonah Bedouch | Home',

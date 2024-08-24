@@ -9,9 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@floating-ui/react": "^0.26.19",
-    "@headlessui/react": "^2.1.1",
+    "@floating-ui/react": "^0.26.22",
+    "@headlessui/react": "^2.1.2",
     "@plaiceholder/next": "^3.0.0",
+    "fastmatter": "^2.1.1",
     "framer-motion": "^11.3.2",
     "next": "14.2.4",
     "next-mdx-remote": "^5.0.0",

@@ -1,6 +1,6 @@
 import { compileMDX } from "next-mdx-remote/rsc";
 import Link from "next/link";
-import { DetailedHTMLProps, DOMAttributes, HTMLAttributes, ImgHTMLAttributes, MouseEvent, MouseEventHandler } from "react";
+import { DetailedHTMLProps, HTMLAttributes, ImgHTMLAttributes } from "react";
 import type { ShikiTransformer } from "@shikijs/core";
 
 //@ts-ignore
@@ -14,19 +14,22 @@ import rehypePrettyCode, { Options } from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
 import RemarkFlexibleToc from "remark-flexible-toc";
 import CopyButton from "@/components/CopyButton";
-import { IconAlertTriangle, IconBulb, IconExclamationCircle, IconInfoCircle, IconInfoCircleFilled, IconLink, IconMessageReport } from "@tabler/icons-react";
-import BoopIcon from "@/components/BoopIcon";
+import { IconLink } from "@tabler/icons-react";
 import { remarkAlert } from "remark-github-blockquote-alert";
 import Image from "next/image";
 import { rehypeImageProcess } from "./unified/rehype-image-size.helper";
 import { remarkSourceRedirect } from "./unified/remark-source-redirect.helper";
 import remarkUnwrapImages from "remark-unwrap-images";
 import HeadingLink from "@/components/HeadingLink";
+import FeaturedPosts from "@/components/FeaturedPosts";
+import CourseworkTable from "@/components/CourseworkTable";
+import { courses } from "../../content/coursework";
+import { Timeline, TimelineEntry } from "@/components/Timeline";
 
 // import { h } from "hastscript";
 
-export const SectionH1 = ({ className, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h1 className={`sm:text-3xl text-5xl font-bold font-lato sm:text-left text-center ${className ?? ""}`} {...props}>{props.children}</h1>
+export const SectionH1 = ({ id, className, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
+    <h1 id={id} className={`flex w-full leading-tight sm:text-3xl text-5xl font-bold font-lato sm:text-left text-center group truncate ${className ?? ""}`} {...props}>{props.children}</h1>
 )
 
 export const SectionP = (props: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
@@ -187,6 +190,8 @@ const PrettyCodeOptions: Options = {
 }
 
 export const MarkdownComponents = { h2: H2, h3: H3, h4: H4, h5: H5, h6: H6, a: A, ul: Ul, ol: Ol, figure: Figure, figcaption: Figcaption, button: Button, span: Span, mark: Mark, div: Div, img: Img }
+const HomeMarkdownComponents = { h1: SectionH1, p: SectionP, FeaturedPosts, CourseworkTable, Timeline, TimelineEntry, ...MarkdownComponents }
+
 
 export async function compilePageMdx<TFrontmatter = Record<string, unknown>>(contentStr: string, rootDir: string) {
     const toc: { value: string, href: string, depth: number, numbering: number[], parent: string }[] = []
@@ -216,5 +221,31 @@ export async function compilePageMdx<TFrontmatter = Record<string, unknown>>(con
     })
 
     return { toc, ...result }
+}
 
+export async function compileHomeMDX(contentStr: string) {
+
+    let result = await compileMDX<{ published: boolean, lastUpdated: string }>({
+        source: contentStr, options: {
+            mdxOptions: {
+                remarkPlugins: [
+                    remarkUnwrapImages,
+                    [remarkAlert, { legacyTitle: true }],
+                    [remarkSourceRedirect, { root: '/assets/' }]
+                ],
+                rehypePlugins: [
+                    rehypeSlug,
+                    [rehypeAutolinkHeadings, { behavior: "append", properties: { ariaHidden: true, tabIndex: -1, 'data-heading-link': '' } }],
+                    [rehypePrettyCode, PrettyCodeOptions],
+                    rehypeParseBlockquotes,
+                    [rehypeImageProcess, { root: './public' }]
+                ]
+            },
+            parseFrontmatter: true,
+            scope: { courses }
+        },
+        components: HomeMarkdownComponents
+    })
+
+    return result;
 }

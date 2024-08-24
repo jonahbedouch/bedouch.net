@@ -135,6 +135,7 @@ export async function getRecentPosts<T extends 'projects' | 'blog'>(type: T, cat
     return recent;
 }
 
+
 // Separated from the other one for cacheing... This doesn't change!
 export async function getSidebarContent<T extends 'projects' | 'blog'>(base: T) {
     const posts = await getCachedPostPaths(base);

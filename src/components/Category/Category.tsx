@@ -20,8 +20,8 @@ function Category(props: Props) {
     mutableParams.set('category', props.category);
   }
 
-  return <Link aria-label={inParams ? 'stop filtering by category' : 'filter by category'} href={{ pathname: `/${props.page}`, query: mutableParams.toString() }} className={`min-w-max py-0.5 px-1 hover:shadow-md shadow-sm rounded-md ${inParams ? 'bg-primary-200 hover:bg-primary-300 dark:bg-primary-800 dark:hover:bg-primary-900' : 'bg-secondary-100 dark:bg-secondary-800 hover:bg-primary-200 dark:hover:bg-primary-800'} ${props.className ?? ''} `}>
-    {props.category}
+  return <Link href={{ pathname: `/${props.page}`, query: mutableParams.toString() }} className={`min-w-max py-0.5 px-1 hover:shadow-md shadow-sm rounded-md ${inParams ? 'bg-primary-200 hover:bg-primary-300 dark:bg-primary-800 dark:hover:bg-primary-900' : 'bg-secondary-100 dark:bg-secondary-800 hover:bg-primary-200 dark:hover:bg-primary-800'} ${props.className ?? ''} `}>
+    <span className='sr-only'>{inParams ? 'stop filtering by category: ' : 'filter by category: '}</span>{props.category}
   </Link>;
 }
 

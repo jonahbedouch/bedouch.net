@@ -15,8 +15,8 @@ const UnfilterLink = (props: Props) => {
   mutableParams.delete('filter', props.tagName);
 
   return (
-    <Link aria-label="stop filtering by tag" href={{ pathname: `/${props.page}`, query: mutableParams.toString() }} className="text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200">
-      {props.tagName}
+    <Link href={{ pathname: `/${props.page}`, query: mutableParams.toString() }} className="text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200">
+      <span className='sr-only'>stop filtering by: </span>{props.tagName}
     </Link>
   )
 }

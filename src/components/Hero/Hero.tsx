@@ -26,9 +26,7 @@ async function Hero() {
                 </div>
             </div>
             <section className="lg:py-sm px-sm py-md md:col-span-9 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5" role="region" aria-label="welcome hero">
-                <Suspense fallback={<>Loading ...</>}>
-                    <MDXRemote source={content} components={{ h1: HeroH1, p: HeroP, Boop: Boop, Socials: Socials }} />
-                </Suspense>
+                <MDXRemote source={content} components={{ h1: HeroH1, p: HeroP, Boop: Boop, Socials: Socials }} />
             </section>
         </>
     )
