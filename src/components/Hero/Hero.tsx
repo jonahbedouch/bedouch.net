@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Socials from "./Socials"
-import avatar from "./avatar.png"
+import avatar from "../../../public/avatar.png"
 import { DetailedHTMLProps, HTMLAttributes, Suspense } from "react"
 import { Boop } from "@components/Boop"
 import { MDXRemote } from "next-mdx-remote/rsc"

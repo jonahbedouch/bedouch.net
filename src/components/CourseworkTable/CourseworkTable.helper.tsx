@@ -81,7 +81,7 @@ export class CourseOverview<T extends string> {
                 </div>
 
                 <div className="grid align-middle justify-center flex-wrap items-center mt-2 gap-2 mx-auto" aria-hidden tabIndex={-1} style={{ maxWidth: `${8 * catKeys.length}rem`, gridTemplateColumns: `repeat(auto-fill, minmax(7rem,1fr)` }}>
-                    {catKeys.map(v => <span className={`flex w-full max-w-32 mx-auto self-center h-12 my-1 justify-center items-center rounded-md ${this._categories[v].className}`}>{v}</span>)}
+                    {catKeys.map(v => <span key={`legend-${v}`} className={`flex w-full max-w-32 mx-auto self-center h-12 my-1 justify-center items-center rounded-md ${this._categories[v].className}`}>{v}</span>)}
                 </div>
             </>
         )

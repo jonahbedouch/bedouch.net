@@ -1,0 +1,87 @@
+---
+published: True
+featured: True
+slug: next-blog
+title: Yet Another React Blog
+publishDate: 2024-08-28
+lastUpdated: 2024-08-28
+category: Frontend
+tags: [React, Next.js, Tailwind ]
+excerpt: "The website you're looking at right now — a responsive portfolio and blog built with Next.js and React."
+---
+
+# Introduction
+Welcome to the second iteration of my personal webpage. This site is a [Next.js](https://nextjs.org) application deployed on [Vercel](https://vercel.com/), 
+using [Tailwind CSS](https://tailwindcss.com) for styling and [next-mdx-remote](https://github.com/hashicorp/next-mdx-remote) to render markdown (such as this 
+project post) into HTML. This site was one of my first attempts at using Next.js, and it has been really useful in understanding both how Next works and in 
+developing a deeper understanding for how React works. 
+
+# Goals
+Most projects start with a set of goals. With this site, I was aiming to accomplish the following things: 
+
+1. Ensure that writing blog posts and project writeups is simple and achievable in a short time span.
+2. Ensure that the website is semantically marked up and accessible for users that are relying on assistive technologies such as screen readers.
+3. Minimize page load time and avoid layout shift.
+4. Keep the website visually appealing, striking a balance between a playful and professional vibe.
+5. Allow for easy retheming of the site, and potentially more playful "seasonal" themes.
+
+Lets discuss the motivations for each of these a little bit more in-depth.
+
+## Simple posts
+Writing is hard, and even when working in a Word document it can take a while for me to articulate a point effectively. Knowing this about myself, I didn't want to 
+make the barrier of entry for adding new content to this site any higher than it already is, out of fear that I simply wouldn't do it. As such, I wanted as much of the 
+site as possible to be modifiable in an easy manner. There are several ways to accomplish this, such as using a WYSIWYG service like Squarespace, a Content Management System 
+like [Ghost](https://ghost.org/), or using Markdown. For many reasons, I was not interested in using a website builder, so I quickly ruled that option out. Opting for Markdown 
+over a Headless CMS, on the other hand, was mostly a decision made for financial reasons. I knew that I wanted to delpoy on the cloud, and most CMS solutions are immediately not 
+ideal in this use case due to high costs. Further, using a CMS would likely increase page load times, as content would need to be fetched from a separate service. Markdown, 
+on the other hand, could be stored in the same GitHub repository as the website itself, and could be rendered at compile time or whenever the markdown is updated, enabling 
+snappy page loads and a relatively easy authoring experience. Something that was unknown to me at the time when staring this project but ended up turning out in my favor is that 
+[Google Docs recently gained support for exporting Docs to Markdown](https://workspaceupdates.googleblog.com/2024/07/import-and-export-markdown-in-google-docs.html), 
+which makes the experience of authoring Markdown posts even simpler than before.
+
+## Accessibility
+Web accessibility is incredibly important, so much so that having a deeper explanation here almost feels moot. Semantic markup and accessibility is often something that gets 
+neglected on the web, but its an incredibly important part of making sure that the world is equally accessible for everyone, which is something that I think is important. The 
+specific goal for this website was that I wanted to target [WCAG 2.0 AA](https://www.w3.org/WAI/WCAG2AA-Conformance) standards, inspired by the fact that UC Berkeley was mandated 
+to comply with the same set of standards. However, I also wanted to have the opportunity to work towards WCAG 2.0 AAA compliance going forward. I accomplished this using the robust 
+theming system that I will dicuss later, which could enable me to make high contrast modes and other important changes to work towards AAA compliance down the road. While I have no 
+way of actually validating that my website is in compliance, I have taken care to ensure that it complies to the best of my knowledge. If there is ever anything that you see that 
+is not WCAG 2.0 AA compliant that I missed (outside of seasonal themes), please [let me know](mailto:jonah@bedouch.net).
+
+## Pageload
+Like accessibility, providing a deep explanation for this is difficult. On one hand, the web is very commonly accessed on mobile devices that do not have access to large amounts of 
+bandwidth, so minimizing the page load helps maximize the experience for everyone. On the other, it also improves SEO drastically. With this in mind, the design of most websites on 
+the internet is dictated by pageload. This was particularly important for me going into this redesign, however, because my previous website did an incredibly poor job with both pageload 
+and layout shift, since it didn't cache anything and had to recompute each endpoint on the fly every time it was accessed — an oversight on my part. My main motivation behind selecting 
+Next.js, other than to learn it, was this. Next handles caching pretty effectively on its own, and allows for features like optimized images and react suspsense that allow page load to 
+speed up while minimizing layout shift.
+
+## Visual Appeal
+A good looking website is everyone's goal. Early concepts for this site relied on a custom, iPadOS-like cursor and a large number of animations to achieve a more application-like look. 
+However, I felt that this took away from the overall look of the site, since it made it feel more like a show piece than it did an actual website that was meant to be interacted with. Thus, 
+I aimed to strike a balance between playful and professional, opting to keep some of the elements of early drafts (such as the emoji grid in the background), while relying on native 
+browser interactions and adding some playful [Josh W Comeau-inspired boops](https://www.joshwcomeau.com/react/boop/) in some places to keep the website playful. Overall, I really like how the 
+site ended up looking, and I think there's a lot of room to do fun things in the future.
+
+## Theming
+One idea that I've been particularly fond of since I started working on the first draft of my first website is the idea of seasonal themes — playful color variants of my website that appear
+around holidays and may be more rough around the edges than the main light or dark mode.
+
+I've been partial to [Tailwind CSS](https://tailwindcss.com) ever since Tailwind 2 came out. 
+The idea of using inline classes to implement styles just works for me, and it makes developing things really quick compared to when I have to work out CSS classes on my own. However, one of 
+Tailwind's downsides is that it makes it much harder to offer multiple themes for a site. With traditional CSS, you can declare all of your colors as CSS variables, then reference the colors 
+you like whenever you need. If you're using a CSS preprocessor, this is even easier since you can rely on commands like `darken()` or `lighten()` to generate variants of a small number of base 
+colors specified. 
+
+For this reason, my old website relied on hand-styled CSS, which made it more difficult for me to maintain. With this site, I wanted to return to Tailwind while keeping the 
+ability to create time-dependent themes. I accomplished this using the [`tw-colors`](https://github.com/L-Blondy/tw-colors) Tailwind plugin, which allows custom themes to be specified within 
+Tailwind, with each theme being able to declare its own named colors that can be referenced using Tailwind's declarative classes.
+
+Relying on this, I was able to write a script that is sent in the header of the website which checks which theme the user has selected in local storage and configures the tw-colors theme to 
+match. Pairing this with [`rehype-pretty-code`](https://github.com/rehype-pretty/rehype-pretty-code), which allowed me to use [Shiki's](https://github.com/shikijs/shiki) theme options, I was 
+able to create a full-site custom theming system that allows for seasonal themes, and can allow for a high contrast theme in the future.
+
+# Inspirations
+
+This site was inspired heavily by elements of [patrickyoussef.com](https://patrickyoussef.com) and [joshwcomeau.com](https://joshwcomeau.com). It uses spacing and clamps from [utopia design](https://utopia.fyi)
+to make sure that the content looks good on all screen sizes.

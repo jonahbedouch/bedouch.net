@@ -2,17 +2,8 @@ import { promises as fs } from "fs";
 import { serialize } from "next-mdx-remote/serialize";
 import { cache } from "react";
 import 'server-only';
+import { BlogCategoryDescriptions, ProjectCategoryDescriptions } from "../../content/categories";
 
-// The categories that appear on the sidebar are NOT based on this - they are 
-// every category that is actually returned by a sweep of every post's frontmatter.
-export const BlogCategoryDescriptions = {
-    "Musings": "Not all things worth saying are easy to categorize. This section consists of any random thoughts, opinions, and ideas that I have.",
-};
-
-export const ProjectCategoryDescriptions = {
-    "Musings": "Not all things worth saying are easy to categorize. This section consists of any random thoughts, opinions, and ideas that I have.",
-    "Balls": ""
-};
 
 export interface Frontmatter {
     published: boolean;

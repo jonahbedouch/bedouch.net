@@ -6,6 +6,7 @@ import localFont from "next/font/local";
 import Footer from "@/components/Footer";
 import SkipLink from "@/components/SkipLink";
 import { calculateSeasonal } from "@/helpers/calculate-themes.helper";
+import { Metadata } from "next";
 
 const lato = Lato({
   weight: ["100", "300", "400", "700", "900"],
@@ -26,6 +27,13 @@ const rubik = localFont({
   ],
   variable: "--font-rubik"
 });
+
+export const metadata: Metadata = {
+  title: {
+    template: "%s | Jonah Bedouch",
+    default: "Jonah Bedouch"
+  }
+}
 
 export default function RootLayout({
   children,

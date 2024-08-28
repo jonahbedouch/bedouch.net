@@ -3,9 +3,36 @@ import ContentCard from "@/components/ContentCard";
 import HomeSection from "@/components/HomeSection";
 import PageHeading from "@/components/PageHeading";
 import Tag from "@/components/Tag";
-import { ProjectCategoryDescriptions, getCachedRecentPosts, getCachedSidebarContent } from "@/helpers/frontmatter.helper";
+import { getCachedRecentPosts, getCachedSidebarContent } from "@/helpers/frontmatter.helper";
+import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
+import { ProjectCategoryDescriptions, ProjectDesc } from "../../../content/categories";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bedouch.net"),
+  title: "Projects",
+  description: "",
+  generator: "Next.js",
+  keywords: ['projects', 'frontend', 'react', 'computer science', 'student'],
+  authors: [{ name: "Jonah Bedouch" }],
+  openGraph: {
+    title: "Projects | Jonah Bedouch",
+    description: ProjectDesc,
+    url: `https://bedouch.net/projects`,
+    siteName: "Jonah Bedouch",
+    locale: "en-US",
+    type: "website",
+    images: [{ url: "/avatar.png", alt: "Jonah's headshot" }]
+  },
+  twitter: {
+    card: "summary",
+    title: `Projects | Jonah Bedouch`,
+    description: ProjectDesc,
+    creator: "@jonahbedouch",
+    images: ["/avatar.png"]
+  }
+}
 
 export default async function Projects({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   console.log(searchParams)
@@ -32,10 +59,12 @@ export default async function Projects({ searchParams }: { searchParams: { [key:
   const sidebarInfo = await getCachedSidebarContent('projects');
   const postInfo = await getCachedRecentPosts('projects', appliedCategory, appliedTags);
 
+  console.log(postInfo.length);
+
   return (
     <div className="w-full grid grid-cols-12">
       <main className="lg:py-sm px-sm py-md mt-3xs-xl md:col-span-8 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5">
-        <PageHeading page="projects" appliedCategory={appliedCategory} appliedTags={appliedTags} />
+        <PageHeading page="projects" appliedCategory={appliedCategory} appliedTags={appliedTags} numResults={postInfo.length} />
 
         <aside className="mt-4 md:hidden md:invisible visible grid grid-cols-2 h-min rounded-lg border-2 p-2 border-secondary-1000 dark:border-secondary-900 ring-opacity-5" aria-label="filter results">
           <div className="">
@@ -58,7 +87,7 @@ export default async function Projects({ searchParams }: { searchParams: { [key:
         </aside>
 
         {
-          postInfo.map(value => <ContentCard key={`project-${value.slug}`} type="project" frontmatter={value} />)
+          postInfo.length !== 0 ? postInfo.map(value => <ContentCard key={`project-${value.slug}`} type="project" frontmatter={value} />) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 mx-auto`}>No results are available. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/projects'}>Reset filters.</Link></span>
         }
 
       </main>
@@ -71,7 +100,9 @@ export default async function Projects({ searchParams }: { searchParams: { [key:
           </Suspense>
         </div>
 
-        <span className="my-1 font-semibold font-lato">Top Tags</span>
+        {
+          sidebarInfo.tags.length !== 0 ? <span className="my-1 font-semibold font-lato">Top Tags</span> : <></>
+        }
         <div className="flex flex-row flex-wrap">
           <Suspense fallback={<>Loading...</>}>
             {sidebarInfo.tags.map(val => (<Tag key={`main-project-tag-${val}`} page="projects" tagName={val} main className="mr-2 mb-2" />))}

@@ -32,7 +32,7 @@ async function ContentCard(props: Props) {
             : <></>}
         </span>
         <h2 className='text-xl font-medium font-lato leading-tight'><span className='sr-only'>Title: </span>{props.frontmatter.title}</h2>
-        <span className='text-secondary-700 dark:text-secondary-400'><span className='sr-only'>Published on: </span>{pubdate.toLocaleDateString('en-US', { month: "long", day: "numeric", year: "numeric" })}</span>
+        <span className='text-secondary-700 dark:text-secondary-400'><span className='sr-only'>Published on: </span>{pubdate.toLocaleDateString('en-US', { timeZone: "UTC", month: "long", day: "numeric", year: "numeric" })}</span>
 
         <p className="mt-1 line-clamp-2 w-full leading-tight">
           {props.frontmatter.excerpt}
@@ -40,7 +40,7 @@ async function ContentCard(props: Props) {
         <span className='absolute flex lg:left-2 left-1 bottom-1 text-primary-800 dark:text-primary-300 group-hover:font-medium underline decoration-transparent group-hover:decoration-primary-800 dark:group-hover:decoration-primary-300 transition-all duration-200'>Read More <span className='relative overflow-hidden inline-block after:content-["\00A0"] after:absolute after:right-0 after:left-0 after:bottom-0 after:top-0 after:underline after:tracking-[1000px] after:decoration-transparent after:group-hover:decoration-primary-800 after:dark:group-hover:decoration-primary-300 after:transition-colors after:duration-200' aria-hidden ><IconArrowUpRight width={24} height={24} focusable={false} className='stroke-1 group-hover:stroke-[1.5] transition-all duration-200' /></span></span>
       </div>
       {props.frontmatter.thumbnail !== undefined ?
-        <Image alt="" className='aspect-square object-cover grayscale-[25%] dark:grayscale-[35%] group-hover:grayscale-0 rounded-md sm:h-[9.4rem] sm:w-[9.4rem] ml-2  sm:block hidden' width={256} height={256} src={`/blog-assets/${props.frontmatter.slug}/${props.frontmatter.thumbnail}`} placeholder='blur' blurDataURL={placeholder}></Image> :
+        <Image alt="" className='aspect-square object-cover grayscale-[25%] dark:grayscale-[35%] group-hover:grayscale-0 rounded-md sm:h-[9.4rem] sm:w-[9.4rem] ml-2  sm:block hidden' width={256} height={256} src={`/${props.type}-assets/${props.frontmatter.slug}/${props.frontmatter.thumbnail}`} placeholder='blur' blurDataURL={placeholder}></Image> :
         <></>
       }
     </Link>

@@ -29,35 +29,38 @@ import { Timeline, TimelineEntry } from "@/components/Timeline";
 // import { h } from "hastscript";
 
 export const SectionH1 = ({ id, className, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h1 id={id} className={`flex w-full leading-tight sm:text-3xl text-5xl font-bold font-lato sm:text-left text-center group truncate ${className ?? ""}`} {...props}>{props.children}</h1>
+    <h1 id={id} className={`flex w-full leading-tight text-3xl font-bold font-lato sm:text-left text-center group truncate ${className ?? ""}`} {...props}>{props.children}</h1>
 )
 
 export const SectionP = (props: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
     <p className="text-base mt-xs text-justify" {...props}>{props.children}</p>
 )
 
+const P = (props: DetailedHTMLProps<HTMLAttributes<HTMLParagraphElement>, HTMLParagraphElement>) => (
+    <p className="text-base mt-1.5" {...props}>{props.children}</p>
+)
 
 const H2 = (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
     <>
-        <h2 className="flex w-full text-2xl leading-tight font-bold font-lato align-baseline sm:text-left text-center group truncate" {...props}>{props.children}</h2>
-        <hr className="bg-black dark:bg-white h-0.5" />
+        <h2 className="flex w-full mt-2 text-2xl leading-tight font-bold font-lato align-baseline sm:text-left text-center group truncate" {...props}>{props.children}</h2>
+        <hr className="bg-black dark:bg-white h-0.5 mb-2" />
     </>
 )
 
 const H3 = (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h3 className="flex w-full text-2xl leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h3>
+    <h3 className="flex w-full mt-2 text-xl leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h3>
 )
 
 const H4 = (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h4 className="flex w-full text-xl leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h4>
+    <h4 className="flex w-full mt-2 text-lg leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h4>
 )
 
 const H5 = (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h5 className="flex w-full text-lg leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h5>
+    <h5 className="flex w-full mt-2 text-base leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h5>
 )
 
 const H6 = (props: DetailedHTMLProps<HTMLAttributes<HTMLHeadingElement>, HTMLHeadingElement>) => (
-    <h6 className="flex w-full text-base leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h6>
+    <h6 className="flex w-full mt-2 text-base leading-tight font-bold font-lato sm:text-left text-center group" {...props}>{props.children}</h6>
 )
 
 const A = ({ className, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>) => {
@@ -122,11 +125,15 @@ const Button = (props: DetailedHTMLProps<HTMLAttributes<HTMLButtonElement>, HTML
 }
 
 const Ul = (props: DetailedHTMLProps<HTMLAttributes<HTMLUListElement>, HTMLUListElement>) => (
-    <ul className="list-disc list-inside" {...props}></ul>
+    <ul className="list-disc list-inside ml-4 my-2 text-base" {...props}></ul>
 )
 
 const Ol = (props: DetailedHTMLProps<HTMLAttributes<HTMLOListElement>, HTMLOListElement>) => (
-    <ol className="list-decimal list-inside" {...props}></ol>
+    <ol className="list-decimal list-inside ml-4 my-2 text-base" {...props}></ol>
+)
+
+const Li = (props: DetailedHTMLProps<HTMLAttributes<HTMLLIElement>, HTMLLIElement>) => (
+    <li className="mb-2" {...props}></li>
 )
 
 const Div = ({ className, ...props }: DetailedHTMLProps<HTMLAttributes<HTMLDivElement>, HTMLDivElement>) => {
@@ -148,8 +155,12 @@ const Img = ({ className, title, ...props }: DetailedHTMLProps<ImgHTMLAttributes
             </figure>
         )
     } else {
-        {/* @ts-ignore - technically the props don't line up but oops they actually do */ }
-        < Image className={`max-w-[85%] max-h-[40rem] h-auto w-auto mx-auto rounded-xl border border-secondary-1000 dark:border-secondary-0 shadow-medium dark:shadow-d-medium ${className ?? ""}`} {...props} placeholder={"blur"} />
+        return (
+            <>
+                {/* @ts-ignore - technically the props don't line up but oops they actually do */}
+                <Image className={`max-w-[85%] max-h-[40rem] h-auto w-auto mx-auto rounded-xl border border-secondary-1000 dark:border-secondary-0 shadow-medium dark:shadow-d-medium ${className ?? ""}`} {...props} placeholder={"blur"} />
+            </>
+        )
     }
 }
 
@@ -189,7 +200,8 @@ const PrettyCodeOptions: Options = {
     transformers: [Transformer],
 }
 
-export const MarkdownComponents = { h2: H2, h3: H3, h4: H4, h5: H5, h6: H6, a: A, ul: Ul, ol: Ol, figure: Figure, figcaption: Figcaption, button: Button, span: Span, mark: Mark, div: Div, img: Img }
+const MarkdownComponents = { h2: H2, h3: H3, h4: H4, h5: H5, h6: H6, a: A, ul: Ul, ol: Ol, li: Li, figure: Figure, figcaption: Figcaption, button: Button, span: Span, mark: Mark, div: Div, img: Img }
+const PageMarkdownComponents = { p: P, ...MarkdownComponents }
 const HomeMarkdownComponents = { h1: SectionH1, p: SectionP, FeaturedPosts, CourseworkTable, Timeline, TimelineEntry, ...MarkdownComponents }
 
 
@@ -217,7 +229,7 @@ export async function compilePageMdx<TFrontmatter = Record<string, unknown>>(con
             },
             parseFrontmatter: true,
         },
-        components: MarkdownComponents
+        components: PageMarkdownComponents
     })
 
     return { toc, ...result }

@@ -3,11 +3,38 @@ import ContentCard from "@/components/ContentCard";
 import HomeSection from "@/components/HomeSection";
 import PageHeading from "@/components/PageHeading";
 import Tag from "@/components/Tag";
-import { BlogCategoryDescriptions, getCachedRecentPosts, getCachedSidebarContent } from "@/helpers/frontmatter.helper";
+import { getCachedRecentPosts, getCachedSidebarContent } from "@/helpers/frontmatter.helper";
 import { SectionH1 } from "@/helpers/mdx.helper";
+import { Metadata } from "next";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { Suspense } from "react";
+import { BlogCategoryDescriptions, BlogDesc } from "../../../content/categories";
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://bedouch.net"),
+  title: "Blog",
+  description: "",
+  generator: "Next.js",
+  keywords: ['blog', 'frontend', 'react', 'computer science', 'student', 'transit'],
+  authors: [{ name: "Jonah Bedouch" }],
+  openGraph: {
+    title: "Blog | Jonah Bedouch",
+    description: BlogDesc,
+    url: `https://bedouch.net/projects`,
+    siteName: "Jonah Bedouch",
+    locale: "en-US",
+    type: "website",
+    images: [{ url: "/avatar.png", alt: "Jonah's headshot" }]
+  },
+  twitter: {
+    card: "summary",
+    title: `Blog | Jonah Bedouch`,
+    description: BlogDesc,
+    creator: "@jonahbedouch",
+    images: ["/avatar.png"]
+  }
+}
 
 export default async function Blog({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   console.log(searchParams)
@@ -37,7 +64,7 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
   return (
     <div className="w-full grid grid-cols-12">
       <main className="lg:py-sm px-sm py-md mt-3xs-xl md:col-span-8 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5">
-        <PageHeading page="blog" appliedCategory={appliedCategory} appliedTags={appliedTags} />
+        <PageHeading page="blog" appliedCategory={appliedCategory} appliedTags={appliedTags} numResults={postInfo.length} />
 
         <aside className="mt-4 md:hidden md:invisible visible grid grid-cols-2 h-min rounded-lg border-2 p-2 border-secondary-1000 dark:border-secondary-900 ring-opacity-5" aria-label="filter results">
           <div className="">
@@ -60,7 +87,7 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
         </aside>
 
         {
-          postInfo.map(value => <ContentCard key={`blog-article-${value.slug}`} type="blog" frontmatter={value} />)
+          postInfo.length !== 0 ? postInfo.map(value => <ContentCard key={`blog-article-${value.slug}`} type="blog" frontmatter={value} />) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 text-center`}>No results are available for this query. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/blog'}>Reset filters.</Link></span>
         }
 
       </main>
@@ -72,8 +99,9 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
             {sidebarInfo.categories.map(val => (<Category key={`main-blog-category-${val}`} page="blog" category={val} className="mr-2 mb-2" />))}
           </Suspense>
         </div>
-
-        <span className="my-1 font-semibold font-lato">Top Tags</span>
+        {
+          sidebarInfo.tags.length !== 0 ? <span className="my-1 font-semibold font-lato">Top Tags</span> : <></>
+        }
         <div className="flex flex-row flex-wrap">
           <Suspense fallback={<>Loading...</>}>
             {sidebarInfo.tags.map(val => (<Tag key={`main-blog-tag-${val}`} page="blog" tagName={val} main className="mr-2 mb-2" />))}
