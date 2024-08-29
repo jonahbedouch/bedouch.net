@@ -22,7 +22,7 @@ async function Hero() {
         <>
             <div className="md:col-span-3 col-span-12 md:m-0 mb-md md:w-auto mx-auto md:h-auto h-1/4">
                 <div className="md:w-auto sm:w-80 w-4/6 sm:h-auto mx-auto">
-                    <Image priority={true} src={avatar} alt='A picture of me' className='rounded-lg overflow-hidden shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5' />
+                    <Image priority={true} src={avatar} alt='A picture of me' className='rounded-lg overflow-hidden shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5' placeholder={"blur"} />
                 </div>
             </div>
             <section className="lg:py-sm px-sm py-md md:col-span-9 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5" role="region" aria-label="welcome hero">
