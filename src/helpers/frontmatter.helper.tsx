@@ -42,8 +42,8 @@ async function getPostPaths(base: string) {
     return dirSearch.filter(value => value.endsWith('/index.mdx'));
 }
 
-export const getCachedPostPaths = cache(getPostPaths);
-export const cachedReadFile = cache(fs.readFile);
+export const getCachedPostPaths = unstable_cache(getPostPaths);
+export const cachedReadFile = unstable_cache(fs.readFile); // I don't think blog posts should be over 2mb ever but idk
 
 export async function getSlugs<T extends 'projects' | 'blog'>(type: T) {
     const posts = await getCachedPostPaths(type);
@@ -185,12 +185,12 @@ export async function getSidebarContent<T extends 'projects' | 'blog'>(base: T) 
     };
 }
 
-export const cacheBlurImage = cache(async (imagePath: string) => {
+export const cacheBlurImage = unstable_cache(async (imagePath: string) => {
     const file = await fs.readFile(imagePath);
     return getPlaiceholder(file);
 })
 
 export const getCachedSlugs = unstable_cache(getSlugs);
 export const getCachedFileLocation = unstable_cache(getFileLocation);
-export const getCachedSidebarContent = unstable_cache(getSidebarContent,);
+export const getCachedSidebarContent = unstable_cache(getSidebarContent);
 export const getCachedRecentPosts = unstable_cache(getRecentPosts);
