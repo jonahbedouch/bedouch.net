@@ -1,11 +1,5 @@
-import ContentCard, { ContentCardFallback } from "@/components/ContentCard";
 import PageHeading from "@/components/PageHeading";
-import { getCachedRecentPosts } from "@/helpers/frontmatter.helper";
-import { Metadata } from "next";
-import Link from "next/link";
-import { Suspense } from "react";
-import { BlogCategoryDescriptions, BlogDesc } from "../../../content/categories";
-import Sidebar, { SidebarFallback } from "@/components/Sidebar";
+import { SidebarFallback } from "@/components/Sidebar";
 
 export default async function Loading() {
 

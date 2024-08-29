@@ -56,8 +56,16 @@ export default async function Projects({ searchParams }: { searchParams: { [key:
     }
   }
 
-  // const sidebarInfo = await getCachedSidebarContent('projects');
-  const postInfo = await getCachedRecentPosts('projects', appliedCategory, appliedTags);
+  const postInfo = await getCachedRecentPosts('projects');
+  const displayedPosts = postInfo.filter((val) => {
+    let isCorrectCategory = appliedCategory === undefined || val.category.toLowerCase() === appliedCategory.toLowerCase();
+    let matchesTags = appliedTags === undefined || appliedTags.every(tag => (val.tags.includes(tag)))
+
+    if (isCorrectCategory && matchesTags) {
+      return true;
+    }
+    return false;
+  })
 
   return (
     <div className="w-full grid grid-cols-12">
@@ -69,7 +77,7 @@ export default async function Projects({ searchParams }: { searchParams: { [key:
         </Suspense>
 
         {
-          postInfo.length !== 0 ? postInfo.map(value => <Suspense key={`project-${value.slug}`} fallback={<ContentCardFallback />} ><ContentCard type="project" frontmatter={value} /></Suspense>) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 mx-auto`}>No results are available. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/projects'}>Reset filters.</Link></span>
+          displayedPosts.length !== 0 ? displayedPosts.map(value => <Suspense key={`project-${value.slug}`} fallback={<ContentCardFallback />} ><ContentCard type="project" frontmatter={value} /></Suspense>) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 mx-auto`}>No results are available. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/projects'}>Reset filters.</Link></span>
         }
 
       </main>

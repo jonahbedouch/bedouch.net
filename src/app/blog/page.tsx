@@ -59,7 +59,17 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
   }
 
   // const sidebarInfo = await getCachedSidebarContent('blog');
-  const postInfo = await getCachedRecentPosts('blog', appliedCategory, appliedTags);
+  const postInfo = await getCachedRecentPosts('blog');
+
+  const displayedPosts = postInfo.filter((val) => {
+    let isCorrectCategory = appliedCategory === undefined || val.category.toLowerCase() === appliedCategory.toLowerCase();
+    let matchesTags = appliedTags === undefined || appliedTags.every(tag => val.tags.includes(tag))
+
+    if (isCorrectCategory && matchesTags) {
+      return true;
+    }
+    return false;
+  })
 
   return (
     <div className="w-full grid grid-cols-12">
@@ -71,7 +81,7 @@ export default async function Blog({ searchParams }: { searchParams: { [key: str
         </Suspense>
 
         {
-          postInfo.length !== 0 ? postInfo.map(value => <Suspense key={`blog-article-${value.slug}`} fallback={<ContentCardFallback />}><ContentCard type="blog" frontmatter={value} /></Suspense>) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 text-center`}>No results are available for this query. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/blog'}>Reset filters.</Link></span>
+          displayedPosts.length !== 0 ? displayedPosts.map(value => <Suspense key={`blog-article-${value.slug}`} fallback={<ContentCardFallback />}><ContentCard type="blog" frontmatter={value} /></Suspense>) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 text-center`}>No results are available for this query. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/blog'}>Reset filters.</Link></span>
         }
 
       </main>

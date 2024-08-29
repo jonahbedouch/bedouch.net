@@ -86,7 +86,7 @@ export async function getFileLocation<T extends 'projects' | 'blog'>(type: T, sl
 }
 
 
-export async function getRecentPosts<T extends 'projects' | 'blog'>(type: T, category: (typeof type extends "projects" ? keyof typeof ProjectCategoryDescriptions : keyof typeof BlogCategoryDescriptions) | undefined, tags: string[] | undefined) {
+export async function getRecentPosts<T extends 'projects' | 'blog'>(type: T) {
     const posts = await getCachedPostPaths(type);
     const recent: TFrontmatter<T>[] = [];
 
@@ -95,23 +95,9 @@ export async function getRecentPosts<T extends 'projects' | 'blog'>(type: T, cat
             const data = await cachedReadFile(`${process.cwd()}/content/${type}/${post}`);
             const serial = await serialize<{}, TFrontmatter<T>>(data.toString(), { parseFrontmatter: true });
 
-            if (validateFrontmatter(serial.frontmatter)) {
-                let isCorrectCategory = category === undefined || serial.frontmatter.category.toLowerCase() === category.toLowerCase();
-
-                if (serial.frontmatter.published && isCorrectCategory) {
-                    if (tags !== undefined) {
-                        for (const tag of tags) {
-                            if (serial.frontmatter.tags.includes(tag) === false) {
-                                continue mainLoop;
-                            }
-                        }
-                    }
-
-                    recent.push(serial.frontmatter);
-                }
-
+            if (validateFrontmatter(serial.frontmatter) && serial.frontmatter.published === true) {
+                recent.push(serial.frontmatter);
             }
-
         }
         catch {
             continue;
