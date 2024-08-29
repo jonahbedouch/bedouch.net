@@ -2,7 +2,7 @@ import { Category, CourseOverview } from "@/components/CourseworkTable/Coursewor
 
 export const courses = new CourseOverview({
     "EECS": new Category("eecs", "red", "bg-red-700 dark:bg-red-800 text-white", "Major requirements for the Electrical Engineering and Computer Science major."),
-    "Breadth": new Category("breadth", 'yellow', "bg-yellow-600 dark:bg-yellow-800 text-white", "Breadth requirements"),
+    "Breadth": new Category("breadth", 'yellow', "bg-yellow-700 dark:bg-yellow-800 text-white", "Breadth requirements"),
     "Decal": new Category("decal", 'green', 'bg-green-700 dark:bg-green-800 text-white', 'A student-ran course taken for fun.'),
     "Teaching": new Category("teaching", "purple", "bg-purple-700 dark:bg-purple-800 text-white", "Courses that I have taught."),
 });

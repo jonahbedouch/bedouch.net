@@ -87,7 +87,6 @@ const config: Config = {
           light: colors.zinc[100],
           dark: colors.zinc[900]
         }
-
       },
       'america': {
         'primary': colors.red,
@@ -103,6 +102,22 @@ const config: Config = {
         'codeblock-bg': {
           light: '#f5f7fc',
           dark: '#0e1734'
+        },
+      },
+      'labour': {
+        'primary': colors.yellow,
+        'secondary': { 0: '#fef8f8', 1000: '#220505', ...colors.red },
+        'text': {
+          light: colors.black,
+          dark: colors.white
+        },
+        'shadow-color': {
+          DEFAULT: 'hsl(0deg 24% 61%)',
+          dark: 'hsl(0deg 100% 6%)'
+        },
+        'codeblock-bg': {
+          light: '#FEF2F2',
+          dark: '#110202'
         }
       }
     }, {

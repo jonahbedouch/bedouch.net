@@ -1,7 +1,7 @@
 'use client'
 
-import { Checkbox, Field, Label, MenuSeparator, Popover, PopoverButton, PopoverPanel, Switch, Transition } from "@headlessui/react";
-import { IconBallAmericanFootball, IconBomb, IconBurger, IconChristmasTree, IconDeviceDesktop, IconDeviceDesktopAnalytics, IconDeviceImac, IconDots, IconMoon, IconSun } from "@tabler/icons-react";
+import { MenuSeparator, Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { IconBurger, IconChristmasTree, IconDeviceDesktop, IconDots, IconHammer, IconMoon, IconSun } from "@tabler/icons-react";
 import React, { Fragment, ReactElement, useEffect, useRef, useState } from "react";
 import Boop from "../Boop";
 import { calculateSeasonal } from "@/helpers/calculate-themes.helper";
@@ -24,6 +24,9 @@ function ThemeIcon(props: { className?: string, theme?: Theme, variant?: ThemeVa
     if (props.theme === 'seasonal' && seasonal !== 'base') {
         if (seasonal === "america") {
             return <IconBurger className={`${props.className}`} aria-hidden={true} focusable={false} />
+        }
+        else if (seasonal === "labour") {
+            return <IconHammer className={`${props.className}`} aria-hidden={true} focusable={false} />
         }
         else if (props.seasonalFallback !== undefined) {
             return React.cloneElement(props.seasonalFallback, { className: props.className, 'aria-hidden': true, focusable: false });

@@ -195,7 +195,9 @@ const PrettyCodeOptions: Options = {
         'light': 'github-light-default',
         'dark': 'github-dark-default',
         'america': 'github-light-default',
-        'america-dark': 'github-dark-default'
+        'america-dark': 'github-dark-default',
+        'labour': 'github-light-default',
+        'labour-dark': 'github-dark-default'
     },
     transformers: [Transformer],
 }

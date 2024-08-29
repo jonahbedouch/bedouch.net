@@ -91,7 +91,7 @@ export async function getRecentPosts<T extends 'projects' | 'blog'>(type: T, cat
     mainLoop: for (const post of posts) {
         try {
             const data = await cachedReadFile(`${process.cwd()}/content/${type}/${post}`);
-            const serial = await serialize<{}, BlogFrontmatter>(data.toString(), { parseFrontmatter: true });
+            const serial = await serialize<{}, TFrontmatter<T>>(data.toString(), { parseFrontmatter: true });
 
             if (validateFrontmatter(serial.frontmatter)) {
                 let isCorrectCategory = category === undefined || serial.frontmatter.category.toLowerCase() === category.toLowerCase();
