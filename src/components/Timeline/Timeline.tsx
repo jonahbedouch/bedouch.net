@@ -26,7 +26,7 @@ type TEProps = {
 
 export async function TimelineEntry(props: TEProps) {
 
-  let file = fs.readFileSync("./public/assets/" + props.imgSrc);
+  let file = fs.readFileSync(process.cwd() + "/public/assets/" + props.imgSrc);
 
   let { base64 } = await getPlaiceholder(file, { size: 4 });
 

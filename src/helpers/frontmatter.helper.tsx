@@ -8,6 +8,7 @@ import { BlogCategoryDescriptions, ProjectCategoryDescriptions } from "../../con
 export interface Frontmatter {
     published: boolean;
     thumbnail?: string;
+    thumbnailBlurUrl?: string;
     title: string;
     slug: string;
     publishDate: string;

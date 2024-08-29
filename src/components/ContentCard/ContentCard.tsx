@@ -1,8 +1,8 @@
-import { BlogFrontmatter, ProjectFrontmatter } from '@/helpers/frontmatter.helper';
+import { BlogFrontmatter, cachedReadFile, ProjectFrontmatter } from '@/helpers/frontmatter.helper';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPlaiceholder } from 'plaiceholder';
-import * as fs from "fs/promises";
+import * as Path from "path";
 import { IconArrowUpRight } from '@tabler/icons-react';
 
 type Props = {
@@ -15,7 +15,8 @@ async function ContentCard(props: Props) {
   const pubdate = new Date(props.frontmatter.publishDate);
   let placeholder;
   if (props.frontmatter.thumbnail !== undefined) {
-    const file = await fs.readFile(`./public/${props.type}-assets/${props.frontmatter.slug}/${props.frontmatter.thumbnail}`)
+    const file = await cachedReadFile(Path.resolve(`./public/${props.type}-assets/${props.frontmatter.slug}/${props.frontmatter.thumbnail}`))
+
     const { base64 } = await getPlaiceholder(file);
     placeholder = base64;
   }

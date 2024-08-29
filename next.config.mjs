@@ -9,9 +9,10 @@ const nextConfig = {
             static: 600,
         },
         outputFileTracingIncludes: {
-            '/content': ['./content/**/*'],
+            '/': ['./content/**/*'],
         },
-    }
+    },
+    pageExtensions: ['js', 'jsx', 'ts', 'tsx', 'md', 'mdx'],
 };
 
 export default withPlaiceholder(nextConfig);

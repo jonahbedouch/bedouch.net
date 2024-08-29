@@ -30,8 +30,9 @@ export const remarkSourceRedirect = (options: Options) => {
         if ('slug' in file.data.matter === false) { return; }
         const slug = typeof file.data.matter.slug === 'string' ? file.data.matter.slug : '';
 
-        //@ts-ignore
-        file.data.matter.thumbnail = `${options.root}${slug}/${file.data.matter.thumbnail}`;
+        if ('matter' in file.data && typeof file.data.matter === "object" && file.data.matter !== null && 'thumbnail' in file.data.matter && typeof file.data.matter.thumbnail === 'string') {
+            file.data.matter.thumbnail = `${options.root}${slug}/${file.data.matter.thumbnail}`;
+        }
 
         // This matches all images that use the markdown standard format ![label](path).
         visit(tree, "image", (node: Parent) => {

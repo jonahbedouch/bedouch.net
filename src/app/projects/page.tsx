@@ -35,7 +35,6 @@ export const metadata: Metadata = {
 }
 
 export default async function Projects({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
-  console.log(searchParams)
   let appliedTags: string[] | undefined = undefined;
   let appliedCategory: keyof typeof ProjectCategoryDescriptions | undefined = undefined;
   if ('filter' in searchParams && searchParams.filter !== undefined) {

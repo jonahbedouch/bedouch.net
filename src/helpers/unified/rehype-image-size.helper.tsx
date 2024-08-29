@@ -11,6 +11,8 @@ import type { Element, Node, Parent, Root } from "hast";
 import type { MdxJsxFlowElement } from "mdast-util-mdx";
 import * as fs from "fs";
 import { getPlaiceholder } from "plaiceholder";
+import type { VFile } from "vfile";
+import { Frontmatter } from "../frontmatter.helper";
 
 type Options = {
     root: string;
@@ -23,7 +25,7 @@ type Options = {
  * @param {string} options.root - The root path when reading the image file.
  */
 export const rehypeImageProcess = (options: Options) => {
-    return async (tree: Root) => {
+    return async (tree: Root, file: VFile) => {
         // This matches all images that use the markdown standard format ![label](path).
 
         const promises: Promise<any>[] = [];
