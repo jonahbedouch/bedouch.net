@@ -12,7 +12,7 @@ import type { MdxJsxFlowElement } from "mdast-util-mdx";
 import * as fs from "fs";
 import { getPlaiceholder } from "plaiceholder";
 import type { VFile } from "vfile";
-import { Frontmatter } from "../frontmatter.helper";
+import { cacheBlurImage, Frontmatter } from "../frontmatter.helper";
 
 type Options = {
     root: string;
@@ -42,9 +42,8 @@ export const rehypeImageProcess = (options: Options) => {
                 node.properties.width = imageSize.width;
                 node.properties.height = imageSize.height;
 
-                let file = fs.readFileSync(imagePath);
 
-                let p = getPlaiceholder(file).then(({ base64 }) => {
+                let p = cacheBlurImage(imagePath).then(({ base64 }) => {
                     let newNode: any = {
                         type: 'element',
                         tagName: 'img',
@@ -90,10 +89,7 @@ export const rehypeImageProcess = (options: Options) => {
                     value: `${imageSize.height}`,
                 });
 
-
-                let file = fs.readFileSync(imagePath)
-
-                let p = getPlaiceholder(file, { size: 4 }).then(({ base64 }) => {
+                let p = cacheBlurImage(imagePath).then(({ base64 }) => {
                     console.log('w', node)
                     let newNode = {
                         ...node

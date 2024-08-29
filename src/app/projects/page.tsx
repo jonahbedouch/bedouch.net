@@ -1,5 +1,5 @@
 import Category from "@/components/Category";
-import ContentCard from "@/components/ContentCard";
+import ContentCard, { ContentCardFallback } from "@/components/ContentCard";
 import HomeSection from "@/components/HomeSection";
 import PageHeading from "@/components/PageHeading";
 import Tag from "@/components/Tag";
@@ -8,6 +8,7 @@ import { Metadata } from "next";
 import Link from "next/link";
 import { Suspense } from "react";
 import { ProjectCategoryDescriptions, ProjectDesc } from "../../../content/categories";
+import Sidebar, { SidebarFallback } from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://bedouch.net"),
@@ -55,66 +56,27 @@ export default async function Projects({ searchParams }: { searchParams: { [key:
     }
   }
 
-  const sidebarInfo = await getCachedSidebarContent('projects');
+  // const sidebarInfo = await getCachedSidebarContent('projects');
   const postInfo = await getCachedRecentPosts('projects', appliedCategory, appliedTags);
-
-  console.log(postInfo.length);
 
   return (
     <div className="w-full grid grid-cols-12">
       <main className="lg:py-sm px-sm py-md mt-3xs-xl md:col-span-8 col-span-12 bg-secondary-0 dark:bg-secondary-1000 overflow-hidden rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5">
         <PageHeading page="projects" appliedCategory={appliedCategory} appliedTags={appliedTags} numResults={postInfo.length} />
 
-        <aside className="mt-4 md:hidden md:invisible visible grid grid-cols-2 h-min rounded-lg border-2 p-2 border-secondary-1000 dark:border-secondary-900 ring-opacity-5" aria-label="filter results">
-          <div className="">
-            <span className="my-1 font-semibold font-lato">Categories</span>
-            <div className="flex flex-row flex-wrap">
-              <Suspense fallback={<>Loading...</>}>
-                {sidebarInfo.categories.map(val => (<Category key={`main-projects-category-${val}`} page="projects" category={val} className="mr-2 mb-2" />))}
-              </Suspense>
-            </div>
-          </div>
-
-          <div className="">
-            <span className="my-1 font-semibold font-lato">Top Tags</span>
-            <div className="flex flex-row flex-wrap">
-              <Suspense fallback={<>Loading...</>}>
-                {sidebarInfo.tags.map(val => (<Tag key={`main-projects-tag-${val}`} page="projects" tagName={val} main className="mr-2 mb-2" />))}
-              </Suspense>
-            </div>
-          </div>
-        </aside>
+        <Suspense fallback={<SidebarFallback page={"projects"} mini />}>
+          <Sidebar page={"projects"} mini />
+        </Suspense>
 
         {
-          postInfo.length !== 0 ? postInfo.map(value => <ContentCard key={`project-${value.slug}`} type="project" frontmatter={value} />) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 mx-auto`}>No results are available. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/projects'}>Reset filters.</Link></span>
+          postInfo.length !== 0 ? postInfo.map(value => <Suspense key={`project-${value.slug}`} fallback={<ContentCardFallback />} ><ContentCard type="project" frontmatter={value} /></Suspense>) : <span className={`block text-secondary-700 dark:text-secondary-400 my-6 mx-auto`}>No results are available. <Link className={`text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200`} href={'/projects'}>Reset filters.</Link></span>
         }
 
       </main>
 
-      <aside className="md:flex hidden mt-3xs-xl ml-sm col-span-4 sticky top-10 flex-col h-min lg:py-sm px-sm py-md bg-secondary-0 dark:bg-secondary-1000 rounded-lg shadow-medium dark:shadow-d-medium ring-1 ring-secondary-1000 dark:ring-secondary-900 ring-opacity-5" aria-label="filter results">
-        <span className="my-1 font-semibold font-lato">Categories</span>
-        <div className="flex flex-row flex-wrap">
-          <Suspense fallback={<>Loading...</>}>
-            {sidebarInfo.categories.map(val => (<Category key={`main-project-category-${val}`} page="projects" category={val} className="mr-2 mb-2" />))}
-          </Suspense>
-        </div>
-
-        {
-          sidebarInfo.tags.length !== 0 ? <span className="my-1 font-semibold font-lato">Top Tags</span> : <></>
-        }
-        <div className="flex flex-row flex-wrap">
-          <Suspense fallback={<>Loading...</>}>
-            {sidebarInfo.tags.map(val => (<Tag key={`main-project-tag-${val}`} page="projects" tagName={val} main className="mr-2 mb-2" />))}
-          </Suspense>
-        </div>
-
-        <span className="my-1 font-semibold font-lato">Featured Projects</span>
-        <Suspense fallback={<>Loading...</>}>
-          {sidebarInfo.featured.map(val => (
-            <Link key={`main-project-featured-${val.slug}`} href={`/projects/${val.slug}`} className="text-primary-800 dark:text-primary-300 underline decoration-transparent hover:decoration-primary-800 dark:hover:decoration-primary-300 transition-colors duration-200">{val.title}</Link>
-          ))}
-        </Suspense>
-      </aside>
+      <Suspense fallback={<SidebarFallback page={"projects"} />}>
+        <Sidebar page={"projects"} />
+      </Suspense>
     </div>
   )
 }

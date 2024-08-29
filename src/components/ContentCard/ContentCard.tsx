@@ -1,4 +1,4 @@
-import { BlogFrontmatter, cachedReadFile, ProjectFrontmatter } from '@/helpers/frontmatter.helper';
+import { BlogFrontmatter, cacheBlurImage, cachedReadFile, ProjectFrontmatter } from '@/helpers/frontmatter.helper';
 import Image from 'next/image';
 import Link from 'next/link';
 import { getPlaiceholder } from 'plaiceholder';
@@ -15,9 +15,7 @@ async function ContentCard(props: Props) {
   const pubdate = new Date(props.frontmatter.publishDate);
   let placeholder;
   if (props.frontmatter.thumbnail !== undefined) {
-    const file = await cachedReadFile(Path.resolve(`./public/${props.type}-assets/${props.frontmatter.slug}/${props.frontmatter.thumbnail}`))
-
-    const { base64 } = await getPlaiceholder(file);
+    const { base64 } = await cacheBlurImage(Path.resolve(`./public/${props.type}-assets/${props.frontmatter.slug}/${props.frontmatter.thumbnail}`));
     placeholder = base64;
   }
 
@@ -45,7 +43,23 @@ async function ContentCard(props: Props) {
         <></>
       }
     </Link>
-  </article >;
+  </article>;
+}
+
+export function ContentCardFallback() {
+  return <article>
+    <div className='animate-pulse rounded-lg bg-secondary-100 hover:bg-secondary-0 dark:base:bg-secondary-900 dark:bg-secondary-950 border border-secondary-700 dark:border-secondary-500 mt-4 mb-2 lg:pl-2 p-1 group flex flex-row relative h-40 w-full transition-all duration-200'>
+      <div className="flex-col flex-grow w-1 opacity-50 dark:opacity-25">
+        <div className='w-1/3 h-3 my-1.5 mb-3 rounded-full bg-secondary-700 dark:bg-secondary-400'></div>
+        <div className='w-2/3 h-5 my-1.5 rounded-full bg-text-light dark:bg-text-dark'></div>
+        <div className="w-1/6 h-3 my-1.5 rounded-full bg-secondary-700 dark:bg-secondary-400"></div>
+
+        <div className="w-[calc(100%-0.5rem)] h-3 mt-4 mb-1 rounded-full bg-text-light dark:bg-text-dark"></div>
+        <div className="w-[calc(100%-0.5rem)] h-3 mt-1.5 mb-1 rounded-full bg-text-light dark:bg-text-dark"></div>
+        <div className='absolute flex lg:left-2 left-1 bottom-1 bg-primary-800 dark:bg-primary-300 transition-all duration-200 w-[6.375rem] h-3 my-1.5 rounded-full'></div>
+      </div>
+    </div>
+  </article>
 }
 
 export default ContentCard;

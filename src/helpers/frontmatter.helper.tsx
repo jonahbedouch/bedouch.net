@@ -3,12 +3,13 @@ import { serialize } from "next-mdx-remote/serialize";
 import { cache } from "react";
 import 'server-only';
 import { BlogCategoryDescriptions, ProjectCategoryDescriptions } from "../../content/categories";
+import { unstable_cache } from "next/cache";
+import { getPlaiceholder } from "plaiceholder";
 
 
 export interface Frontmatter {
     published: boolean;
     thumbnail?: string;
-    thumbnailBlurUrl?: string;
     title: string;
     slug: string;
     publishDate: string;
@@ -184,7 +185,12 @@ export async function getSidebarContent<T extends 'projects' | 'blog'>(base: T) 
     };
 }
 
-export const getCachedSlugs = cache(getSlugs);
-export const getCachedFileLocation = cache(getFileLocation);
-export const getCachedSidebarContent = cache(getSidebarContent);
-export const getCachedRecentPosts = cache(getRecentPosts);
+export const cacheBlurImage = cache(async (imagePath: string) => {
+    const file = await fs.readFile(imagePath);
+    return getPlaiceholder(file);
+})
+
+export const getCachedSlugs = unstable_cache(getSlugs);
+export const getCachedFileLocation = unstable_cache(getFileLocation);
+export const getCachedSidebarContent = unstable_cache(getSidebarContent,);
+export const getCachedRecentPosts = unstable_cache(getRecentPosts);
