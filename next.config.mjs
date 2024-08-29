@@ -7,7 +7,10 @@ const nextConfig = {
         staleTimes: {
             dynamic: 300,
             static: 600,
-        }
+        },
+        outputFileTracingIncludes: {
+            '/content': ['./content/**/*'],
+        },
     }
 };
 
