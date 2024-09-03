@@ -39,4 +39,5 @@ const fa24 = courses.addSemester("Fall 24");
 fa24.addCourse("Operating Systems and System Programming", "CS 162", 'EECS', "https://cs162.org");
 fa24.addCourse("Programming Languages and Compilers", "CS 164", 'EECS', "https://classes.berkeley.edu/content/2024-fall-compsci-164-001-lec-001");
 fa24.addCourse("Efficient Algorithms and Intractable Problems", "CS 170", 'EECS', "https://cs170.org/");
+fa24.addCourse("Adaptive Instruction Methods in Computer Science", "CS 370", 'Breadth', "https://classes.berkeley.edu/content/2024-fall-compsci-370-002-lec-002");
 fa24.addCourse("Computer Security", "CS 161", 'Teaching', "https://fa24.cs161.org");
