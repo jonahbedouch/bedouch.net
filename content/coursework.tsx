@@ -177,22 +177,28 @@ fa24.addCourse(
 
 const sp25 = courses.addSemester("Spring 25");
 sp25.addCourse(
-  "Foundations of Computer Graphics",
-  "CS 184",
-  "EECS",
-  "https://cs184.eecs.berkeley.edu/sp25",
-);
-sp25.addCourse(
   "Combinatorics and Discrete Probability",
-  "CS 174",
+  "CS 152",
   "EECS",
-  "https://www2.eecs.berkeley.edu/Courses/CS174/",
+  "https://inst.eecs.berkeley.edu/~cs152/sp25/",
 );
 sp25.addCourse(
   "Introduction to the Internet: Architecture and Protocols",
   "CS 168",
   "EECS",
   "https://sp25.cs168.io/",
+);
+sp25.addCourse(
+  "Foundations of Computer Graphics",
+  "CS 184",
+  "EECS",
+  "https://cs184.eecs.berkeley.edu/sp25",
+);
+sp25.addCourse(
+  "Designing Computer Science Education",
+  "CS 302",
+  "Breadth",
+  "https://cs302.org/sp25/",
 );
 sp25.addCourse(
   "Computer Security",
