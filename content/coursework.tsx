@@ -177,7 +177,7 @@ fa24.addCourse(
 
 const sp25 = courses.addSemester("Spring 25");
 sp25.addCourse(
-  "Combinatorics and Discrete Probability",
+  "Computer Architecture",
   "CS 152",
   "EECS",
   "https://inst.eecs.berkeley.edu/~cs152/sp25/",
@@ -205,4 +205,56 @@ sp25.addCourse(
   "CS 161",
   "Teaching",
   "https://sp25.cs161.org",
+);
+
+const su25 = courses.addSemester("Summer 25");
+su25.addCourse(
+  "Computer Security",
+  "CS 161",
+  "Teaching",
+  "https://su25.cs161.org",
+);
+
+const fa25 = courses.addSemester("Fall 25");
+fa25.addCourse(
+  "Introduction to Digital Design and Integrated Circuits",
+  "EECS 151",
+  "EECS",
+  "https://www2.eecs.berkeley.edu/Courses/EECS151/",
+);
+fa25.addCourse(
+  "Introduction to Digital Design and Integrated Circuits — ASIC Lab",
+  "EECS 151 LA",
+  "EECS",
+  "https://www2.eecs.berkeley.edu/Courses/EECS151/",
+);
+fa25.addCourse(
+  "Introduction to Digital Design and Integrated Circuits — FPGA Lab",
+  "EECS 151 LB",
+  "EECS",
+  "https://www2.eecs.berkeley.edu/Courses/EECS151/",
+);
+fa25.addCourse(
+  "Social Implications of Computer Technology",
+  "CS 195",
+  "EECS",
+  "https://cs195.org/fa25/",
+);
+fa25.addCourse(
+  "Advanced Topics in Computer Systems",
+  "CS 262A",
+  "EECS",
+  "https://people.eecs.berkeley.edu/~kubitron/courses/cs262a-F25/index.html",
+);
+fa25.addCourse(
+  "Introduction to Linguistic Science",
+  "LING 100",
+  "Breadth",
+  "https://classes.berkeley.edu/content/2025-fall-linguis-100-001-lec-001",
+);
+fa25.addCourse(
+  "Computer Security",
+  "CS 161",
+  "Teaching",
+  "https://fa25.cs161.org",
 );
