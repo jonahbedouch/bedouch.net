@@ -45,7 +45,7 @@ fa22.addCourse(
 );
 fa22.addCourse(
   "Literature of American Cultures",
-  "ENGLISH 31AC",
+  "ENGL 31AC",
   "Breadth",
   "https://classes.berkeley.edu/content/2022-fall-english-31ac-001-lec-001",
 );
@@ -71,7 +71,7 @@ sp23.addCourse(
 );
 sp23.addCourse(
   "English Composition in Connection with the Reading of Literature",
-  "FRENCH R1B",
+  "FRNCH R1B",
   "Breadth",
   "https://classes.berkeley.edu/content/2023-spring-french-r1b-002-lec-002",
 );
@@ -91,7 +91,7 @@ fa23.addCourse(
 );
 fa23.addCourse(
   "Physics for Scientists and Engineers",
-  "PHYSICS 7A",
+  "PHYS 7A",
   "EECS",
   "https://classes.berkeley.edu/content/2023-fall-physics-7a-002-lec-002",
 );
@@ -130,7 +130,7 @@ sp24.addCourse(
 );
 sp24.addCourse(
   "Physics for Scientists and Engineers",
-  "PHYSICS 7B",
+  "PHYS 7B",
   "EECS",
   "https://classes.berkeley.edu/content/2024-spring-physics-7b-002-lec-002",
 );
@@ -224,13 +224,13 @@ fa25.addCourse(
 );
 fa25.addCourse(
   "Introduction to Digital Design and Integrated Circuits — ASIC Lab",
-  "EECS 151 LA",
+  "EECS 151LA",
   "EECS",
   "https://www2.eecs.berkeley.edu/Courses/EECS151/",
 );
 fa25.addCourse(
   "Introduction to Digital Design and Integrated Circuits — FPGA Lab",
-  "EECS 151 LB",
+  "EECS 151LB",
   "EECS",
   "https://www2.eecs.berkeley.edu/Courses/EECS151/",
 );
@@ -258,3 +258,6 @@ fa25.addCourse(
   "Teaching",
   "https://fa25.cs161.org",
 );
+
+// const sp26 = courses.addSemester("Spring 26");
+// sp26.addCourse

@@ -68,7 +68,7 @@ const CourseEntry = (props: Props) => {
                         <span className="sr-only">category: {props.categoryName}. course name: </span>{props.name}
                     </div>
                 }
-                <a target="_blank" aria-describedby={id} ref={refs.setReference} {...getReferenceProps()} href={props.href} className={`flex mx-auto w-32 h-8 my-1 justify-center items-center rounded-md ${props.className ?? ''}`}>
+                <a target="_blank" aria-describedby={id} ref={refs.setReference} {...getReferenceProps()} href={props.href} className={`flex mx-auto w-24 h-8 my-1 justify-center items-center rounded-md ${props.className ?? ''}`}>
                     {props.abbreviation}
                 </a>
             </td>
