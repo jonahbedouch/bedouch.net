@@ -58,7 +58,7 @@ export class CourseOverview<T extends string> {
         return (
             <>
                 <div role="region" aria-labelledby="courseoverviewcap" className="w-full overflow-scroll snap-x snap-mandatory">
-                    <table className="w-full table-fixed" style={{ minWidth: `${this._semesters.length * 7}rem` }}>
+                    <table className="w-full table-fixed" style={{ minWidth: `${this._semesters.length * 8}rem` }}>
                         <caption id="courseoverviewcap" className="sr-only">
                             Each column of this table represents a semester of college. Each cell contains the course number of a class that I took or taught in that semester.
                             Each class is categorized based on its background color. The full name of the course appears in a tooltip on hover. For screen readers, the
