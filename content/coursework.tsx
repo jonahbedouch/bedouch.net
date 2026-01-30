@@ -259,5 +259,34 @@ fa25.addCourse(
   "https://fa25.cs161.org",
 );
 
-// const sp26 = courses.addSemester("Spring 26");
-// sp26.addCourse
+const sp26 = courses.addSemester("Spring 26");
+sp26.addCourse(
+  "Computer Security",
+  "CS 261",
+  "EECS",
+  "http://people.eecs.berkeley.edu/~daw/teaching/cs261-s26/"
+)
+sp26.addCourse(
+  "Microfabrication",
+  "EE 143",
+  "EECS",
+  "https://classes.berkeley.edu/content/2026-spring-eleng-143-001-lec-001"
+)
+sp26.addCourse(
+  "IC Design Project: 16nm SoC for IoT",
+  "EE 194-7",
+  "EECS",
+  "https://ee194.org/"
+)
+sp26.addCourse(
+  "Computer Security",
+  "CS 161",
+  "Teaching",
+  "https://sp26.cs161.org",
+)
+sp26.addCourse(
+  "Introduction to the Internet: Architecture and Protocols",
+  "CS 168",
+  "Teaching",
+  "https://sp26.cs168.io/",
+)
